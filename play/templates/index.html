@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
+{% block content %}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+<script type="text/javascript" src="{%static 'js/neigh.js'%}"></script>
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+<style>
+  .top {
+    /* background-image: url('../image/pres1.jpeg'); */
+    height: 500px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+  }
+  </style>
+
+<div class="top"><br><br><br>
+    <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color:#63AA7C;">Here, For you <br> Weplay</h1>
+</div>
+<div class="">
+    <p>Preferred Playground venue</p>
+  </div>
+  <div class="row">
+    {% for image in images %}
+    <div class="col-md-3">
+      <div class="col-md-12 col-md-offset-1 col-sm-12">
+        <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+          <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
+            class="img-thumbnail photo" alt="Image">
+          <hr class="uk-divider-icon">
+          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Location:{{image.location}}</p>
+          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Description:{{image.description}}</p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+{%endblock%}
