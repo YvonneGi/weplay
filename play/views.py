@@ -3,13 +3,15 @@ from django.http  import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import ProfileForm
+
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def home(request):
     title='weplay'
     profiles= Profile.objects.all()
     current_user = request.user
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user})
+    images = Playground.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
