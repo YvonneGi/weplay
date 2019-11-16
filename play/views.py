@@ -38,3 +38,21 @@ def edit_profile(request):
 def all_playgrounds(request):
     images = Playground.get_images()
     return render(request, 'welcome.html', {"images": images})
+def detail(request,image_id):
+        image = Playground.objects.get(id = image_id)
+        return render(request,"details.html", {"image":image})
+
+def create_team(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = TeamForm(request.POST, request.FILES)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.t_name = current_user
+            team.Playground = request.user.join.hood_id 
+            team.save()
+        return redirect('welcome')
+
+    else:
+        form = AddBizForm()
+    return render(request, 'add_biz.html', {"form": form})
