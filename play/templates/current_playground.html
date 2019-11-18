@@ -1,0 +1,102 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super}}
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Current playground</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1 id="mainheading" style="text-align:center;" class="display-4">Play with us</h1>
+    <div class="row">
+      {% for image in images %}
+      <div class="col-md-3">
+        <div class="col-md-12 col-md-offset-1 col-sm-12">
+          <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+            <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
+              class="img-thumbnail photo" alt="Image">
+            <hr class="uk-divider-icon">
+            <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.category}}</p>
+            <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Description:{{image.description}}</p>
+          </div>
+        </div>
+      </div>
+  
+      {% endfor %}
+  
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <a href="" class="btn btn-sm btn-success" >Add Team</a>
+
+        <a href="" class="btn btn-sm btn-success" >Add Event</a>
+        <a href="" class="btn btn-sm btn-danger">Leave this</a>
+      </div>
+      <div class="col-md-6">
+
+        <h2>Team in {{playground.category}} </h2>
+        <br>
+        <div class="card-columns">
+          {% for team in teams%}
+          <div class="card" style="width:100%;">
+
+
+            <div class="card-body" style="background-color:#eceff1;">
+              <h5>{{team.name | upper}}</h5>
+              <h5>{{team.description | safe}}</h5>
+              <a href="" class="btn btn-sm btn-success">Join</a>
+              <!-- <p>{{team.email }}</p> -->
+            </div>
+          </div>
+
+          {% empty %}
+          <h4>No teams yet! Register one <a style="color:rgb(151, 243, 240);" href="">here</a></h4>
+
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <a href="" class="btn btn-sm btn-success" style="background-color: rgb(2, 36, 29)">Neghborhood Events</a>
+        <br> <br>
+        {% for event in events%}
+        <h3>{{event.name}}</h3>
+        <p id="text" style="margin-bottom:0;">By <a style="width:100%; padding-left:10px;"
+            href="{% url 'user_profile' username=post.poster %}">
+            <label>{{post.poster}}</label></a></p>
+
+        {% empty %}
+        <h4>No posts :
+          <br>
+          <a style="color:rgb(151, 243, 240);" href="{% url 'new_post'  %}">Create one!</a></h4>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+{% endblock %}

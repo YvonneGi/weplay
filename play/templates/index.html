@@ -26,6 +26,7 @@
 <div class="">
     <!-- <p>Preferred Playground venue</p> -->
   </div>
+  <br>
   <div class="row">
     {% for image in images %}
     <div class="col-md-3">
@@ -34,8 +35,9 @@
           <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
             class="img-thumbnail photo" alt="Image">
           <hr class="uk-divider-icon">
-          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Location:{{image.location}}</p>
-          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Description:{{image.description}}</p>
+          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.category}}</p>
+          <!-- <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Description:{{image.description}}</p> -->
+          <a href="" class="btn btn-sm btn-success" style="color: white;font-family: 'Acme', sans-serif;">Read more</a>
         </div>
       </div>
     </div>
