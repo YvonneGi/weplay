@@ -1,15 +1,15 @@
-
 {%extends 'base.html'%}
 {% load bootstrap4 %}
 {% load static%}
 {% block content %}
 {{block.super}}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
-<script type="text/javascript" src="{%static 'js/neigh.js'%}"></script>
+
 {% block styles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 {% endblock %}
 <style>
