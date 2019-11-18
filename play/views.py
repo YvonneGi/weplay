@@ -49,7 +49,7 @@ def create_team(request):
         if form.is_valid():
             team = form.save(commit=False)
             team.t_name = current_user
-            team.Playground = request.user.join.hood_id 
+            team.Playground = request.user
             team.save()
         return redirect('welcome')
 
