@@ -55,4 +55,19 @@ def create_team(request):
 
     else:
         form = AddBizForm()
+
+        if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            team_id = int(request.POST.get("idteam"))
+            team = Team.objects.get(id = team_id)
+            chat = form.save(commit=False)
+            chat.username = request.user
+            chat.team = team
+            chat.save()
+        return redirect('detail')
+
+    else:
+        form = ChatForm()
+        
     return render(request, 'add_biz.html', {"form": form})
