@@ -102,3 +102,18 @@ class Profile(models.Model):
         ''' Method to delete a profile from the database'''
 
         self.delete()
+
+
+class Chat(models.Model):
+    chat = models.CharField(max_length=300)
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    team = models.ForeignKey(Team,on_delete=models.CASCADE)
+
+    def save_chat(self):
+        '''Method to save a chat in the database'''
+        self.save()
+
+    def delete_chat(self):
+
+        ''' Method to delete a chat from the database'''
+        self.delete()
