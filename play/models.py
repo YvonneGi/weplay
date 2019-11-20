@@ -51,11 +51,16 @@ class Playground(models.Model):
     def delete_image(self):
         ''' Method to delete an image from the database'''
         self.delete()
+    @classmethod
+    def find_playground(cls,playground_id):
+        playground = cls.objects.get(id=playground_id)
+        return playground
+
 class Team(models.Model):
-    t_name = models.CharField(max_length = 300)
+    t_name = models.CharField(max_length = 400)
     description = models.CharField(max_length=300)
     members = models.IntegerField()
-    Playground = models.ForeignKey(Playground)
+    ground = models.ForeignKey(Playground)
     def save_name(self):
         '''Method to save an names in the database'''
         self.save()

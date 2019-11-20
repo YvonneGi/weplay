@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import ProfileForm
+from .forms import ProfileForm,TeamForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -11,7 +11,8 @@ def home(request):
     profiles= Profile.objects.all()
     current_user = request.user
     images = Playground.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images})
+    team = Team.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -35,24 +36,28 @@ def edit_profile(request):
         form=ProfileForm(instance=request.user.profile)
      
     return render(request,'edit_profile.html',locals())
-def all_playgrounds(request):
+def all_playgrounds(request,playground_id):
     images = Playground.get_images()
-    return render(request, 'welcome.html', {"images": images})
+    playg = Playground.objects.get(id=playground_id)
+    
+    return render(request, 'index.html', {"images": images,"playground_id":playground_id})
 def detail(request,image_id):
         image = Playground.objects.get(id = image_id)
-        return render(request,"details.html", {"image":image})
+        team = Team.objects.all()
+        return render(request,"details.html", {"image":image, "team":team})
 
 def create_team(request):
     current_user = request.user
+   
     if request.method == 'POST':
         form = TeamForm(request.POST, request.FILES)
         if form.is_valid():
             team = form.save(commit=False)
-            team.t_name = current_user
-            team.Playground = request.user
             team.save()
-        return redirect('welcome')
+        return redirect('detail')
 
     else:
-        form = AddBizForm()
-    return render(request, 'add_biz.html', {"form": form})
+        form = TeamForm()
+        
+    return render(request, 'team.html', {"form": form})
+
