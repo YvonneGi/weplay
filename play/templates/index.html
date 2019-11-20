@@ -1,20 +1,19 @@
-
 {%extends 'base.html'%}
 {% load bootstrap4 %}
 {% load static%}
 {% block content %}
 {{block.super}}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
-<script type="text/javascript" src="{%static 'js/neigh.js'%}"></script>
+
 {% block styles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 {% endblock %}
 <style>
   .top {
-    /* background-image: url('../image/pres1.jpeg'); */
    
     background-color: rgb(0, 0, 0);
   }
@@ -35,9 +34,9 @@
           <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
             class="img-thumbnail photo" alt="Image">
           <hr class="uk-divider-icon">
+
           <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.category}}</p>
-          <!-- <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">Description:{{image.description}}</p> -->
-          <a href="" class="btn btn-sm btn-success" style="color: white;font-family: 'Acme', sans-serif;">Read more</a>
+          <a href="/detail/{{image.id}}" class="btn btn-sm btn-success"> <button>view details</button> </a>
         </div>
       </div>
     </div>

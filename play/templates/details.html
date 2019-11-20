@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
+{% block content %}
+{{block.super}}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="w3.css">
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+<div class="container">
+
+    <div class="w3-container w3-content">
+        <!-- The Grid -->
+        <div class="w3-row">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <div class="w3-col m10">
+                        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+
+                            <span class="w3-right w3-opacity"></span>
+
+                            <img src="{{image.photo.url}}" style="width:90%" class="w3-margin-bottom">
+                            <p class="text-center">Location:{{image.location}}</p>
+                            <p class="text-center">Description:{{image.description}}</p>
+                            
+                        </div>
+                        <!-- End Middle Column -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Container -->
+    </div>
+</div>
+
+{% endblock %}
