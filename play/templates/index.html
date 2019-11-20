@@ -14,33 +14,38 @@
 {% endblock %}
 <style>
   .top {
-   
+
     background-color: rgb(0, 0, 0);
   }
-  </style>
+</style>
 
 <div class="top"><br><br><br>
-    <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color:#63AA7C;">Here, For you <br> Weplay</h1>
+  <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color:#63AA7C;">Here, For
+    you <br> Weplay</h1>
 </div>
 <div class="">
-    <!-- <p>Preferred Playground venue</p> -->
-  </div>
-  <div class="row">
-    {% for image in images %}
-    <div class="col-md-3">
-      <div class="col-md-12 col-md-offset-1 col-sm-12">
-        <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
-          <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
-            class="img-thumbnail photo" alt="Image">
-          <hr class="uk-divider-icon">
-          <a href="/detail/{{image.id}}" class="panel panel-footer"> <button>view details</button> </a>
-        </div>
+  <!-- <p>Preferred Playground venue</p> -->
+</div>
+<div class="row">
+  {% for image in images %}
+  <div class="col-md-3">
+    <div class="col-md-12 col-md-offset-1 col-sm-12">
+      <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+        <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
+          class="img-thumbnail photo" alt="Image">
+        <hr class="uk-divider-icon">
+        <a href="{% url 'detail' image.id%}" class="panel panel-footer"> <button>view details</button> </a>
       </div>
     </div>
-
-    {% endfor %}
-
   </div>
+  
+  {% endfor %}
+  
+  {% block scripts %}
+  
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>{% bootstrap_javascript %} {% endblock %}
+</div>
 
 
 {%endblock%}
