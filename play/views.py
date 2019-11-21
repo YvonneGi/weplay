@@ -12,9 +12,14 @@ def home(request):
     current_user = request.user
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
+
     post = Events.objects.all()
     locations = Location.objects.all()
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations})
+
+    chats=Chat.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
+
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -58,7 +63,11 @@ def create_team(request,activities_id):
             team = form.save(commit=False)
             team.ground = playg
             team.save()
+
         return redirect('detail', activities_id)
+
+
+        return redirect('detail', playground_id)
 
     else:
         form = TeamForm()
@@ -99,5 +108,28 @@ def page_location(request,location):
     location_results = Fitness_activities.filter_location(location)
     return render(request,'index.html',{'all_images':location_results,'locations':locations,'categories':categories, 'title':title})
 
+@login_required(login_url='/accounts/login/')
+def chat(request,team_id):
+    current_user = request.user
+    teams= Team.objects.all()
+
+    team = Team.objects.get(id = team_id)
+    chats = Chat.objects.filter(team=team.id)
+    
+
+    for team in teams:
+        team.save()
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
+        if form.is_valid():
+            chat = form.save(commit=False)
+            chat.username = request.user
+            chat.team = team
+            chat.save()
+        return redirect('chat',team_id)
+
+    else:
+        form = ChatForm()
+        return render(request,'chat.html',{"current_user":current_user,"chats":chats,"form":form,"teams":teams,"team_id":team_id})
 
 

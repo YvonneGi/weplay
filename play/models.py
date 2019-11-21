@@ -74,6 +74,7 @@ class Team(models.Model):
     description = models.CharField(max_length=300)
     members = models.IntegerField(choices=list(zip(range(0, 40), range(0, 40))), default=0)
     ground = models.ForeignKey(Fitness_activities)
+
     def save_name(self):
         '''Method to save an names in the database'''
         self.save()
@@ -118,7 +119,7 @@ class Profile(models.Model):
 
 
 class Chat(models.Model):
-    chat = models.CharField(max_length=300)
+    message = models.TextField(max_length=300)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
 
@@ -129,6 +130,7 @@ class Chat(models.Model):
     def delete_chat(self):
 
         ''' Method to delete a chat from the database'''
+
         self.delete()
 class Events (models.Model):
     title = models.CharField(max_length=30)
@@ -144,3 +146,5 @@ class Events (models.Model):
     def all_event(cls,id):
         posts = Events.objects.all()
         return posts
+
+        self.delete()
