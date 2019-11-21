@@ -86,9 +86,9 @@
     <a href="{%url 'create_team' image.id %}" class="btn btn-sm btn-success"><button>create team</button></a>
     
    {%for teams in team %}
-   <p>{{teams.t_name}}</p> 
-   <p>{{teams.description}}</p>
-   <p>{{teams.members}}</p>
+   <a href="{%url 'chat' teams.id %}"><p >{{teams.t_name}}</p></a>
+   <!-- <p>{{teams.description}}</p>
+   <p>{{teams.members}}</p> -->
    
    
    {% endfor %}
@@ -120,7 +120,7 @@
 
 
   {%for teams in team %}
-  <a href="{%url 'chat' teams.id %}"><p >{{teams.t_name}}</p></a>
+  
   <!-- <p>{{teams.description}}</p>
   <p>{{teams.members}}</p> -->
 
