@@ -15,8 +15,6 @@ class NewPostForm(forms.ModelForm):
         exclude = ['posted_by','poster']
 
 
-         exclude = ['ground']
-
 class ChatForm (forms.ModelForm):
     class Meta:
          model = Chat
