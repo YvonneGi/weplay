@@ -1,3 +1,4 @@
+
 from __future__ import unicode_literals
 
 from django.conf import settings
@@ -25,11 +26,7 @@ class Migration(migrations.Migration):
             name='Chat',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-
-                ('chat', models.CharField(max_length=300)),
-
-                ('message', models.CharField(max_length=300)),
-
+                ('message', models.TextField(max_length=300)),
             ],
         ),
         migrations.CreateModel(
@@ -42,6 +39,16 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Events',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('title', models.CharField(max_length=30)),
+                ('post_description', models.CharField(max_length=300)),
+                ('posted_by', models.CharField(max_length=30)),
+            ],
+        ),
+        migrations.CreateModel(
+
             name='Fitness_activities',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -88,11 +95,14 @@ class Migration(migrations.Migration):
             field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
+
+
             model_name='fitness_activities',
             name='location',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='play.Location'),
         ),
         migrations.AddField(
+
             model_name='events',
             name='poster',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='play.Fitness_activities'),
