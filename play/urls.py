@@ -10,6 +10,8 @@ urlpatterns=[
     url(r'^all/$', views.all_playgrounds, name='allplaygrounds'),
     url(r'^detail/(\d+)', views.detail, name='detail'),
     url(r'^new/team/(\d+)', views.create_team, name='create_team'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^new/post/(\d+)', views.new_post, name='new_post'),
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:

@@ -10,9 +10,10 @@ def home(request):
     title='weplay'
     profiles= Profile.objects.all()
     current_user = request.user
-    images = Playground.objects.all()
+    images = Fitness_activities.objects.all()
     team = Team.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team})
+    post = Events.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -36,31 +37,60 @@ def edit_profile(request):
         form=ProfileForm(instance=request.user.profile)
      
     return render(request,'edit_profile.html',locals())
-def all_playgrounds(request,playground_id):
-    images = Playground.get_images()
-    playg = Playground.objects.get(id=playground_id)
+def all_playgrounds(request,activities_id):
+    images = Fitness_activities.get_images()
+    playg = Fitness_activities.objects.get(id=activities_id)
     
-    return render(request, 'index.html', {"images": images,"playground_id":playground_id})
+    return render(request, 'index.html', {"images": images,"activities_id":activities_id})
 def detail(request,image_id):
-        image = Playground.objects.get(id = image_id)
+        image = Fitness_activities.objects.get(id = image_id)
         team = Team.objects.filter(ground=image_id)
-        return render(request,"details.html", {"image":image, "team":team})
+        post = Events.objects.filter(poster=image_id)
+        return render(request,"details.html", {"image":image, "team":team,"post":post})
 
-def create_team(request,playground_id):
+def create_team(request,activities_id):
     current_user = request.user
-    playg = Playground.objects.get(id=playground_id)
+    playg = Fitness_activities.objects.get(id=activities_id)
     if request.method == 'POST':
         form = TeamForm(request.POST, request.FILES)
         if form.is_valid():
             team = form.save(commit=False)
             team.ground = playg
             team.save()
-        return redirect('detail', playground_id)
+        return redirect('detail', activities_id)
 
     else:
         form = TeamForm()
         
-    return render(request, 'team.html', {"form": form,"playground_id":playground_id})
+    return render(request, 'team.html', {"form": form,"activities_id":activities_id})
+def search_results(request):
+
+    if 'activities' in request.GET and request.GET["activities"]:
+        search_term = request.GET.get("activities")
+        searched_activity = Fitness_activities.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"activitiess": searched_activity})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+def new_post(request,activities_id):
+    current_user = request.user
+    news= Fitness_activities.objects.get(id=activities_id)
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.posted_by = current_user
+            post.poster = news
+            post.save()
+        return redirect('detail', activities_id)
+
+    else:
+        form = NewPostForm()
+    return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
+
 
 
 

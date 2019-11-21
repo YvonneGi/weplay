@@ -30,7 +30,7 @@ class Category(models.Model):
 
         self.delete()
 
-class Playground(models.Model):
+class Fitness_activities(models.Model):
     photo = models.ImageField(upload_to = 'images/')
     description = models.CharField(max_length=3000)
     location = models.CharField(max_length=255)
@@ -47,20 +47,23 @@ class Playground(models.Model):
     def update_image(self):
         ''' Method to update an image in the database'''
         self.update()
-
+    @classmethod
+    def search_by_category(cls,search_term):
+        activities = cls.objects.filter(category__cat_name__contains=search_term)
+        return activities
     def delete_image(self):
         ''' Method to delete an image from the database'''
         self.delete()
     @classmethod
-    def find_playground(cls,playground_id):
-        playground = cls.objects.get(id=playground_id)
+    def find_activities(cls,activities_id):
+        playground = cls.objects.get(id=activities_id)
         return playground
 
 class Team(models.Model):
     t_name = models.CharField(max_length = 400)
     description = models.CharField(max_length=300)
-    members = models.IntegerField()
-    ground = models.ForeignKey(Playground)
+    members = models.IntegerField(choices=list(zip(range(0, 40), range(0, 40))), default=0)
+    ground = models.ForeignKey(Fitness_activities)
     def save_name(self):
         '''Method to save an names in the database'''
         self.save()
@@ -117,3 +120,17 @@ class Chat(models.Model):
 
         ''' Method to delete a chat from the database'''
         self.delete()
+class Events (models.Model):
+    title = models.CharField(max_length=30)
+    post_description = models.CharField(max_length=300)
+    posted_by = models.CharField(max_length=30)
+    poster = models.ForeignKey(Fitness_activities)
+    @classmethod
+    def get_event(cls, post_hood):
+        posts = Events.objects.filter(post_hood=id)
+        return posts
+
+    @classmethod
+    def all_event(cls,id):
+        posts = Events.objects.all()
+        return posts

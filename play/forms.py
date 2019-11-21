@@ -8,3 +8,7 @@ class TeamForm (forms.ModelForm):
      class Meta:
          model = Team
          exclude = ['ground']
+class NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Events
+        exclude = ['posted_by','poster']
