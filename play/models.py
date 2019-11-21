@@ -4,7 +4,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 # Create your models here.
 
+class Location(models.Model):
+    location_name = models.CharField(max_length=30, unique=True)
+    def __str__(self):
+            return self.location_name
 
+    def save_location(self):
+        self.save()
 class Category(models.Model):
 
     """ class to indicate the category of the Playground"""
@@ -33,7 +39,7 @@ class Category(models.Model):
 class Fitness_activities(models.Model):
     photo = models.ImageField(upload_to = 'images/')
     description = models.CharField(max_length=3000)
-    location = models.CharField(max_length=255)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     post_date=models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category)
 
@@ -58,6 +64,10 @@ class Fitness_activities(models.Model):
     def find_activities(cls,activities_id):
         playground = cls.objects.get(id=activities_id)
         return playground
+    @classmethod
+    def filter_location(cls,location):
+        filter_loc = cls.objects.filter(location__location_name__icontains=location)
+        return filter_loc
 
 class Team(models.Model):
     t_name = models.CharField(max_length = 400)

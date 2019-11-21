@@ -13,7 +13,8 @@ def home(request):
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
     post = Events.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post})
+    locations = Location.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -64,17 +65,17 @@ def create_team(request,activities_id):
         
     return render(request, 'team.html', {"form": form,"activities_id":activities_id})
 def search_results(request):
-
+    locations = Location.objects.all()
     if 'activities' in request.GET and request.GET["activities"]:
         search_term = request.GET.get("activities")
         searched_activity = Fitness_activities.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"activitiess": searched_activity})
+        return render(request, 'search.html',{"message":message,"activitiess": searched_activity,'locations':locations})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        return render(request, 'search.html',{"message":message,'locations':locations})
 def new_post(request,activities_id):
     current_user = request.user
     news= Fitness_activities.objects.get(id=activities_id)
@@ -91,6 +92,12 @@ def new_post(request,activities_id):
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
 
+def page_location(request,location):
+    locations = Location.objects.all()
+    categories = Category.objects.all()
+    title = f"{location}"
+    location_results = Fitness_activities.filter_location(location)
+    return render(request,'index.html',{'all_images':location_results,'locations':locations,'categories':categories, 'title':title})
 
 
 
