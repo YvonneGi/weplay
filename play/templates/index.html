@@ -25,7 +25,7 @@
 <div class=""> 
 </div>
 <div class="row">
-  {% for image in images %}
+  <!-- {% for image in images %}
   <div class="col-md-3">
     <div class="col-md-12 col-md-offset-1 col-sm-12">
       <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
@@ -38,8 +38,24 @@
     </div>
   </div>
   
-  {% endfor %}
+  {% endfor %} -->
+  <!--  -->
   
+    {% for image in all_images %}
+    <div class="col-md-3">
+      <div class="col-md-12 col-md-offset-1 col-sm-12">
+        <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+          <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
+            class="img-thumbnail photo" alt="Image">
+          <hr class="uk-divider-icon">
+          <a href="{% url 'detail' image.id%}" class="panel panel-footer"> <button>view details</button> </a>
+  
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  
+  <!--  -->
   {% block scripts %}
   
 <!-- MDB core JavaScript -->
