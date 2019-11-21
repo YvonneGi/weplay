@@ -12,7 +12,8 @@ def home(request):
     current_user = request.user
     images = Playground.objects.all()
     team = Team.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team})
+    chats=Chat.objects.all()
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -56,11 +57,33 @@ def create_team(request,playground_id):
             team.ground = playg
             team.save()
         return redirect('detail', playground_id)
-
-
     else:
         form = TeamForm()
         
     return render(request, 'team.html', {"form": form,"playground_id":playground_id})
+
+@login_required(login_url='/accounts/login/')
+def chat(request):
+    current_user = request.user
+    teams= Team.objects.all()
+    chats = Chat.objects.all()
+    
+
+    for team in teams:
+        team.save()
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
+        if form.is_valid():
+            team_id = int(request.POST.get("idteam"))
+            team = Chat.objects.get(id = team_id)
+            chat = form.save(commit=False)
+            chat.username = request.user
+            chat.team = team
+            chat.save()
+        return redirect('chat')
+
+    else:
+        form = ChatForm()
+        return render(request,'chat.html',{"current_user":current_user,"chats":chats,"form":form,"teams":teams})
 
 

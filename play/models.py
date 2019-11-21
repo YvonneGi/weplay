@@ -105,7 +105,7 @@ class Profile(models.Model):
 
 
 class Chat(models.Model):
-    chat = models.CharField(max_length=300)
+    message = models.TextField(max_length=300)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
 

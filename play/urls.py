@@ -10,7 +10,8 @@ urlpatterns=[
     url(r'^all/$', views.all_playgrounds, name='allplaygrounds'),
     url(r'^detail/(\d+)', views.detail, name='detail'),
     url(r'^new/team/(\d+)', views.create_team, name='create_team'),
+    url(r'^chat/', views.chat, name='chat'),
 ]
-## this references the location to the uploaded files.
+
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
