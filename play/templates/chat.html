@@ -35,19 +35,19 @@
             </br>
               <div id="card{{team.id}}" class="mt-2">
                 {%for chat in chats %}
-                {%if chat.team.id == team.id %}
+                
                 <p>
                   <strong>{{chat.username.username}}
                    
                   </strong> {{chat.message}}
                 </p>
-                {%endif%}
+              
                 {%endfor%}
 
-                <form action="{%url 'chat'%}" method="post" enctype="multipart/form-data">
+                <form action="{%url 'chat' team_id%}" method="post" enctype="multipart/form-data">
                   {%csrf_token%}
                   {% bootstrap_form form layout='inline' %}
-                  <input type="submit" name="idteam" style="position:relative;left:10px" value="{{team.id}}">  
+                  <input type="submit" name="idteam" style="position:relative;left:10px" value="send message">  
                 </form>
               </div>
 

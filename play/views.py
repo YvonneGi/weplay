@@ -63,10 +63,12 @@ def create_team(request,playground_id):
     return render(request, 'team.html', {"form": form,"playground_id":playground_id})
 
 @login_required(login_url='/accounts/login/')
-def chat(request):
+def chat(request,team_id):
     current_user = request.user
     teams= Team.objects.all()
-    chats = Chat.objects.all()
+
+    team = Team.objects.get(id = team_id)
+    chats = Chat.objects.filter(team=team.id)
     
 
     for team in teams:
@@ -74,16 +76,14 @@ def chat(request):
     if request.method == 'POST':
         form = ChatForm(request.POST)
         if form.is_valid():
-            team_id = int(request.POST.get("idteam"))
-            team = Chat.objects.get(id = team_id)
             chat = form.save(commit=False)
             chat.username = request.user
             chat.team = team
             chat.save()
-        return redirect('chat')
+        return redirect('chat',team_id)
 
     else:
         form = ChatForm()
-        return render(request,'chat.html',{"current_user":current_user,"chats":chats,"form":form,"teams":teams})
+        return render(request,'chat.html',{"current_user":current_user,"chats":chats,"form":form,"teams":teams,"team_id":team_id})
 
 

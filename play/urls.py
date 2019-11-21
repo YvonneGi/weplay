@@ -10,7 +10,7 @@ urlpatterns=[
     url(r'^all/$', views.all_playgrounds, name='allplaygrounds'),
     url(r'^detail/(\d+)', views.detail, name='detail'),
     url(r'^new/team/(\d+)', views.create_team, name='create_team'),
-    url(r'^chat/', views.chat, name='chat'),
+    url(r'^chat/(\d+)', views.chat, name='chat'),
 ]
 
 if settings.DEBUG:

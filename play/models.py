@@ -61,6 +61,7 @@ class Team(models.Model):
     description = models.CharField(max_length=300)
     members = models.IntegerField()
     ground = models.ForeignKey(Playground)
+    
     def save_name(self):
         '''Method to save an names in the database'''
         self.save()
