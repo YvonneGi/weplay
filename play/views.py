@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -58,7 +57,10 @@ def create_team(request,playground_id):
             team.save()
         return redirect('detail', playground_id)
 
+
     else:
         form = TeamForm()
         
     return render(request, 'team.html', {"form": form,"playground_id":playground_id})
+
+

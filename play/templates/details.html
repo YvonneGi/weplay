@@ -83,7 +83,9 @@
         </div>
         
     </div>
-    <a href="{%url 'add_team' %}" class="btn btn-sm btn-success"><button>create team</button></a>
+
+    <a href="{%url 'create_team' image.id %}" class="btn btn-sm btn-success"><button>create team</button></a>
+
     
    {%for teams in team %}
    <p>{{teams.t_name}}</p> 
