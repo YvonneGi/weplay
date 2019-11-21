@@ -108,7 +108,7 @@ class Profile(models.Model):
 
 
 class Chat(models.Model):
-    chat = models.CharField(max_length=300)
+    message = models.TextField(max_length=300)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
 
@@ -119,6 +119,7 @@ class Chat(models.Model):
     def delete_chat(self):
 
         ''' Method to delete a chat from the database'''
+
         self.delete()
 class Events (models.Model):
     title = models.CharField(max_length=30)
@@ -134,3 +135,5 @@ class Events (models.Model):
     def all_event(cls,id):
         posts = Events.objects.all()
         return posts
+
+        self.delete()
