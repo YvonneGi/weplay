@@ -14,6 +14,10 @@ urlpatterns=[
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^new/post/(\d+)', views.new_post, name='new_post'),
     url(r'^ajax/message/$', views.message, name='message'),
+    url(r'^location/(\w+)', views.page_location,name='page_location'),
+
+
+
 
 ]
 if settings.DEBUG:
