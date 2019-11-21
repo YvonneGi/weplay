@@ -6,14 +6,18 @@
 
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<title>add team</title>
+
+<title>add post</title>
 {{form.media}}
+
+
+
 <div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
-  <form action="{%url 'create_team' activities_id  %}" method="post" enctype="multipart/form-data">
+  <form action="{%url 'new_post' activities_id %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="create_team">
+    <input type="submit" class="btn btn-success btn-lg" value="add post">
   </form>
 </div>
 {% block scripts %}

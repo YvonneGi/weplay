@@ -11,7 +11,9 @@ urlpatterns=[
     url(r'^detail/(\d+)', views.detail, name='detail'),
     url(r'^new/team/(\d+)', views.create_team, name='create_team'),
     url(r'^chat/(\d+)', views.chat, name='chat'),
-]
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^new/post/(\d+)', views.new_post, name='new_post'),
 
+]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
