@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import ProfileForm,TeamForm
+from .forms import *
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -43,18 +43,19 @@ def all_playgrounds(request,playground_id):
     return render(request, 'index.html', {"images": images,"playground_id":playground_id})
 def detail(request,image_id):
         image = Playground.objects.get(id = image_id)
-        team = Team.objects.all()
+        team = Team.objects.filter(ground=image_id)
         return render(request,"details.html", {"image":image, "team":team})
 
-def create_team(request):
+def create_team(request,playground_id):
     current_user = request.user
-   
+    playg = Playground.objects.get(id=playground_id)
     if request.method == 'POST':
         form = TeamForm(request.POST, request.FILES)
         if form.is_valid():
             team = form.save(commit=False)
+            team.ground = playg
             team.save()
-        return redirect('detail')
+        return redirect('detail', playground_id)
 
     else:
          form = TeamForm()
@@ -73,5 +74,7 @@ def create_team(request):
     else:
         form = ChatForm()  
         
-    return render(request, 'team.html', {"form": form})
+    return render(request, 'team.html', {"form": form,"playground_id":playground_id})
+
+
 

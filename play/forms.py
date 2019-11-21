@@ -7,4 +7,4 @@ class ProfileForm(forms.ModelForm):
 class TeamForm (forms.ModelForm):
      class Meta:
          model = Team
-         exclude = ['']
+         exclude = ['ground']

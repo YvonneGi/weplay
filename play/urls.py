@@ -9,7 +9,7 @@ urlpatterns=[
     url(r'^accounts/edit-profile/', views.edit_profile, name = 'edit-profile'),
     url(r'^all/$', views.all_playgrounds, name='allplaygrounds'),
     url(r'^detail/(\d+)', views.detail, name='detail'),
-    url(r'^new/team$', views.create_team, name='create_team'),
+    url(r'^new/team/(\d+)', views.create_team, name='create_team'),
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:
