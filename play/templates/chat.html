@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
@@ -27,36 +28,47 @@
   <hr>
   <div class="container-fluid">
     <div class="row">
+      <div class="card-body">
+        <div class="card-footer-section">
+          </br>
+          <div id="card{{team.id}}" class="mt-2">
+            {%for chat in chats %}
 
+            <p>
 
-
-          <div class="card-body">
-            <div class="card-footer-section">
-            </br>
-              <div id="card{{team.id}}" class="mt-2">
-                {%for chat in chats %}
-                
-                <p>
-                  <strong>{{chat.username.username}}
-                   
-                  </strong> {{chat.message}}
-                </p>
-              
-                {%endfor%}
-
-                <form action="{%url 'chat' team_id%}" method="post" enctype="multipart/form-data">
-                  {%csrf_token%}
-                  {% bootstrap_form form layout='inline' %}
-                  <input type="submit" name="idteam" style="position:relative;left:10px" value="send message">  
-                </form>
+              <div class="col-md-3">
+                {% if user.profile_pic %}
+                <img src="{{user.profile_pic.url}}" alt="" width="200" height="200">
+                {% else %}
+                <img
+                  src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
+                  alt="" width="200" height="200">
+                {% endif %}
               </div>
+              <strong>{{chat.username.username}}</strong>
+              {{chat.message}}
+            </p>
 
-            </div>
+            {%endfor%}
+
+            <form action="{%url 'chat' team_id%}" method="post" enctype="multipart/form-data">
+              {%csrf_token%}
+              {% bootstrap_form form layout='inline' %}
+              <input type="submit" name="idteam" style="position:relative;left:10px" value="send message">
+            </form>
           </div>
+
+        </div>
+      </div>
 
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% bootstrap_javascript %}
+  {% endblock %}
+
+
+  {% block scripts %} {{block.super}}
+  <script type="text/javascript" src="{%static 'js/chat.js'%}"></script>
   {% endblock %}
 </body>
 

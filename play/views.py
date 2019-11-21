@@ -3,6 +3,7 @@ from django.http  import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+from django.http import JsonResponse
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -105,11 +106,9 @@ def new_post(request,activities_id):
 def chat(request,team_id):
     current_user = request.user
     teams= Team.objects.all()
-
     team = Team.objects.get(id = team_id)
     chats = Chat.objects.filter(team=team.id)
     
-
     for team in teams:
         team.save()
     if request.method == 'POST':
@@ -126,3 +125,12 @@ def chat(request,team_id):
         return render(request,'chat.html',{"current_user":current_user,"chats":chats,"form":form,"teams":teams,"team_id":team_id})
 
 
+def message(request):
+    message = request.POST.get('your_message')
+   
+
+    recipient = MessageRecipients(message=message)
+    recipient.save()
+    # send_welcome_email(name, email)
+    data = {'success': 'Your message is sent'}
+    return JsonResponse(data)
