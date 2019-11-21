@@ -14,7 +14,6 @@ class NewPostForm(forms.ModelForm):
         model = Events
         exclude = ['posted_by','poster']
 
-
 class ChatForm (forms.ModelForm):
     class Meta:
          model = Chat
