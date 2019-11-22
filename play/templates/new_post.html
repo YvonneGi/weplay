@@ -4,25 +4,56 @@
 {% load bootstrap4 %}
 {% load staticfiles%}
 
-
+<style>
+#top{
+  background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 410px;
+}
+#form{
+  border-style: ridge;
+}
+h1{
+  text-align: center;
+}
+h3{
+  font-size: 20px;
+}
+body{
+  background-color: #95A5A6 ;
+}
+</style>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-<title>add post</title>
+<title>add team</title>
 {{form.media}}
+<body>
+<div class="container" ><br> <br> <br> <br> <br> <br> <br>
+  <div id="form" style="background-color: #f3f3f5;">
+    <div class="row">
+  <div class="col-md-4">
+      <div id="top"></div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <h1>Add Event</h1> <br>
+    <form action="{%url 'new_post' activities_id %}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
 
-
-
-<div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
-  <form action="{%url 'new_post' activities_id %}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-
-    {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="add post">
-  </form>
+      {% bootstrap_form form%}
+      <input type="submit" class="btn btn-success btn-lg" value="add event">
+    </form>
+  </div>
 </div>
+
+
+</div>
+</div> <br> <br> <br> <br> <br>
+
 {% block scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 {% bootstrap_javascript %}
 {% endblock %}
+</body>
 {% endblock %}

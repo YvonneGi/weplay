@@ -1,30 +1,55 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
- 
+{% block content %}
 <style>
-  
+  #top{
+  background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+  body{
+  background-color: #95A5A6 ;
+}
+#form{
+  border-style: ridge;
+}
+h1{
+  text-align: center;
+}
+h3{
+  font-size: 20px;
+}
 </style>
 
-{% block content %}
-<div class="panel panel-default">
 
-    <div class="panel-body">
-      <div class="logo-header">
-        <h1>Edit your profile</h1>
-        <br>
-      </div>
-      <form action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
+<body>
+  
+    <div class="container"> <br> <br> <br> <br> <br> <br> <br>
+      <div id="form" style="background-color: #f3f3f5;">
+      <div class="row">
+        <div class="col-md-4"> 
+            <div id="top"></div>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-4"> 
 
-        {% csrf_token%}
-        {% bootstrap_form form %}
-        <div class="form-group text-center">
-          <input type="submit" class="btn btn-success btn-lg" value="Save Changes">
+            <h1>Edit your profile</h1>
+            <form action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
+      
+              {% csrf_token%}
+              {% bootstrap_form form %}
+              <div class="form-group text-center">
+                <input type="submit" class="btn btn-success btn-lg" value="Save Changes">
+              </div>
+      
+      
+            </form>
         </div>
 
-
-      </form>
-    </div>
-  </div>
-
+      </div>
+      </div>
+    </div> <br> <br> <br>
+</body>
 
   {% endblock %}

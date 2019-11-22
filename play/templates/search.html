@@ -4,56 +4,67 @@
 {% block content %}
 {{block.super}}
 
+
+{% block styles %}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="w3.css">
-{% block styles %}
 {% bootstrap_css %}
 {% endblock %}
-<div class="container">
+<style>
+body{
+    background-color: #95A5A6 ;
+}
+</style>
+<body>
+    <div class="container"> <br> <br> <br> <br> <br> <br>
 
-    <div class="row">
+        <div class="row">
+            {% if activitiess%}
+            <h2>Found searched term. {{message}}</h2>
+            {% else %}
+            <h2> Found 0 activities for the search term. {{message}}</h2>
+            {% endif %}
+
+        </div>
         {% if activitiess%}
-        <h2>Found searched term. {{message}}</h2>
-        {% else %}
-        <h2> Found 0 activities for the search term. {{message}}</h2>
-        {% endif %}
 
-    </div>
-    {% if activitiess%}
+        {% for img in activitiess %}
 
-    {% for img in activitiess %}
+        <div class=" row">
+            <div class="w3-container w3-content">
+                <!-- The Grid -->
+                <div class="w3-row">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11">
+                            <div class="w3-col m10">
+                                <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
-    <div class=" row">
-        <div class="w3-container w3-content">
-            <!-- The Grid -->
-            <div class="w3-row">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
-                        <div class="w3-col m10">
-                            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-    
-                                <span class="w3-right w3-opacity"></span>
-                                <p>{{img.category}} </p>
-                                <img src="{{img.photo.url}}" class="img-responsive" alt="Image" width='400' length='450'>
-                                
-                                <p class="text-center">Location:{{img.location}}</p>
-                                <p class="text-center">Description:{{img.description}}</p>
-                                
+                                    <span class="w3-right w3-opacity"></span>
+                                    <p>{{img.category}} </p>
+                                    <img src="{{img.photo.url}}" class="img-responsive" alt="Image" width='400'
+                                        length='450'>
+
+                                    <p class="text-center">Location:{{img.location}}</p>
+                                    <p class="text-center">Description:{{img.description}}</p>
+
+                                </div>
+                                <!-- End Middle Column -->
                             </div>
-                            <!-- End Middle Column -->
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
-        {%endfor%}
-        
-        {%endif%}
-        
-    </div>
-    
-    
 
-    {%endblock%}
+            </div>
+            {%endfor%}
+
+            {%endif%}
+
+        </div>
+    </div> <br> <br> <br> <br> <br>
+
+</body>
+
+
+
+{%endblock%}
