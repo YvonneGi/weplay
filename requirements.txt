@@ -8,6 +8,7 @@ django-registration==2.4.1
 gunicorn==20.0.0
 Pillow==6.2.1
 psycopg2==2.8.4
+python-decouple==3.3
 pytz==2019.3
 soupsieve==1.9.5
 whitenoise==4.1.4
