@@ -14,13 +14,33 @@
 {% endblock %}
 <style>
   .top {
-    background-color: rgb(0, 0, 0);
+    background-image: url('http://doyoga.ancorathemes.com/wp-content/uploads/2017/03/slide1.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 800px;
   }
+ ul{
+   text-decoration: none;
+ }
 </style>
 
 <div class="top"><br><br><br>
-  <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color:#63AA7C;">Here, For
-    you <br> Weplay</h1>
+  <ul>
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Locations
+      </a>
+      <div class="dropdown-menu drop" aria-labelledby="navbarDropdown">
+        {% for locat in locations %}
+        <a class="dropdown-item" href="{% url 'page_location' locat.location_name %}">{{locat.location_name}}</a>
+        <div class="dropdown-divider"></div>
+  
+  
+        {% endfor %}
+      </div>
+    </li>
+  </ul>
 </div>
 <div class=""> 
 </div>

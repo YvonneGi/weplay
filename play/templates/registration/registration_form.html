@@ -1,16 +1,40 @@
 {%extends "registration/base.html"%} 
 {% load bootstrap4 %}
 {% block content %}
-<div class="container">
+<style>
+#top{
+  background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 750px;
+  width: 500px;
+}
+#form{
+  border-style: ridge;
+}
+h1{
+  text-align: center;
+}
+h3{
+  font-size: 15px;
+}
+</style>
+<div class="container"> <br> <br>
+  <div id="form">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
     <div class="col-md-4">
-      {% if form.errors %}
+        <div id="top"></div>
+    </div>
+    <div class="col-md-3"></div>
+    <!-- empty div -->
+    <div class="col-md-4">
+
+        {% if form.errors %}
         <p> Some Information Might be Incorrect </p>
       {% endif %}
       <div class="panel panel-default">
-
+          <h1>Weplay</h1> <br>
         <div class="panel-heading">
           <h3 class="text-center">Sign Up</h3>
         </div>
@@ -26,15 +50,16 @@
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
+          <p>Arleady have an Account</p> <span><a href="/accounts/login/" class="btn btn-primary btn-sm">Sign
+            In</a></span>
 
         </div>
 
       </div>
 
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
   </div>
-</div>
+  </div>
+</div> <br> <br>
 
 {% endblock %}
