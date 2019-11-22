@@ -18,9 +18,15 @@ h1{
 h3{
   font-size: 15px;
 }
+body{
+  background-color: #95A5A6 ;
+}
 </style>
-<div class="container"> <br> <br>
-  <div id="form">
+<body >
+  
+
+<div class="container"> <br> <br> <br>
+  <div id="form" style="background-color: #f3f3f5;">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4">
@@ -50,8 +56,8 @@ h3{
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
-          <p>Arleady have an Account</p> <span><a href="/accounts/login/" class="btn btn-primary btn-sm">Sign
-            In</a></span>
+          <p> Arleady have an Account ?<a href="/accounts/login/" class="btn btn-primary btn-sm"  style="margin:10px">Sign
+            In</a> </p>
 
         </div>
 
@@ -61,5 +67,5 @@ h3{
   </div>
   </div>
 </div> <br> <br>
-
+</body>
 {% endblock %}

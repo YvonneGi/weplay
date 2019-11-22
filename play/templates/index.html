@@ -13,38 +13,22 @@
 
 {% endblock %}
 <style>
-  .top {
-    background-image: url('http://doyoga.ancorathemes.com/wp-content/uploads/2017/03/slide1.jpg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: 800px;
-  }
+
  ul{
    text-decoration: none;
  }
+
+ .hh{
+   text-align: center;
+
+ }
 </style>
 
-<div class="top"><br><br><br>
-  <ul>
-  <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Locations
-      </a>
-      <div class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-        {% for locat in locations %}
-        <a class="dropdown-item" href="{% url 'page_location' locat.location_name %}">{{locat.location_name}}</a>
-        <div class="dropdown-divider"></div>
-  
-  
-        {% endfor %}
-      </div>
-    </li>
-  </ul>
-</div>
-<div class=""> 
-</div>
-<div class="row">
+
+<div class="hh"> <br>
+  <h1> Fitness Activities Venue and Events</h1>
+</div> <br>
+
   <!-- {% for image in images %}
   <div class="col-md-3">
     <div class="col-md-12 col-md-offset-1 col-sm-12">
@@ -80,7 +64,6 @@
   
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>{% bootstrap_javascript %} {% endblock %}
-</div>
 
 
 {%endblock%}
