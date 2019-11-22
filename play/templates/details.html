@@ -15,7 +15,6 @@
   }
 </style>
 {% endblock %}
-
 <body>
 
   <div class="container-fluid"> <br> <br> <br> <br>
@@ -46,19 +45,10 @@
 
         <a href="{%url 'new_post' image.id %}" class="btn btn-sm btn-success"><button>Post an Event Here</button></a>
       </div> <br> <br>
-
-      <!-- <div class="row">
-        {% for event in post %}
-        <div class="col-md-4">
-          <h2> {{event.title}}</h2>
-          <p>--------------------------------</p>
-          <p>{{event.post_description}}</p>
-          <p>Posted by: {{event.posted_by}}</p>
-
-        </div>
+       </div>
 
         {%endfor%}
-      </div> -->
+
             <div class="row " data-wow-delay="0.4s">
               {% for event in post %}
               <div class="col-md-4 mb-5">
@@ -87,13 +77,13 @@
                     </div>
                     {%endfor%}
                   </div>       
-             <!-- </div> -->
+
 
 
 
     </div>
 
-  </div>
+
 </body>
 
 
