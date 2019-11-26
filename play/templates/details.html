@@ -15,6 +15,7 @@
   }
 </style>
 {% endblock %}
+
 <body>
 
   <div class="container-fluid"> <br> <br> <br> <br>
@@ -45,45 +46,38 @@
 
         <a href="{%url 'new_post' image.id %}" class="btn btn-sm btn-success"><button>Post an Event Here</button></a>
       </div> <br> <br>
-       </div>
-
-        {%endfor%}
-
-            <div class="row " data-wow-delay="0.4s">
-              {% for event in post %}
-              <div class="col-md-4 mb-5">
-        
-                <div class="card card-body hoverable">
-                  <h2 class="font-weight-bold text-uppercase mb-4">{{event.title}}</h2>
-                  <p>--------------------------------</p>
-                  <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p>
-                  <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p>
-                </div>
-              </div>
-              {%endfor%}
-            </div> 
-        
-            <div class="row">
-                <a href="{%url 'create_team' image.id %}" class="btn btn-sm btn-success"><button>create team</button></a>
-                 </div> <br>
-                <div class="row " data-wow-delay="0.4s">
-                    {%for teams in team %}
-                    <div class="col-md-3 mb-5">
-              
-                      <div class="card card-body hoverable">
-                          <a href="{%url 'chat' teams.id %}"><h2 >{{teams.t_name}}</h2></a>  
-
-                      </div>
-                    </div>
-                    {%endfor%}
-                  </div>       
-
-
-
-
     </div>
 
+    <div class="row " data-wow-delay="0.4s">
+      {% for event in post %}
+      <div class="col-md-4 mb-5">
 
+        <div class="card card-body hoverable">
+          <h2 class="font-weight-bold text-uppercase mb-4">{{event.title}}</h2>
+          <p>--------------------------------</p>
+          <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p>
+          <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+
+    <div class="row">
+      <a href="{%url 'create_team' image.id %}" class="btn btn-sm btn-success"><button>create team</button></a>
+    </div> <br>
+    <div class="row " data-wow-delay="0.4s">
+      {%for teams in team %}
+      <div class="col-md-3 mb-5">
+
+        <div class="card card-body hoverable">
+          <a href="{%url 'chat' teams.id %}">
+            <h2>{{teams.t_name}}</h2>
+          </a>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
 </body>
 
 
