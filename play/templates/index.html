@@ -22,8 +22,20 @@
   }
   img{
     height: 100vh;
+ 
 
   }
+  #h5{
+    color: #ECF0F1;
+    margin-bottom: 25%;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    
+  }
+  /* #mt{
+    margin-top: -20%;
+    
+  } */
 
 </style>
 
@@ -39,16 +51,26 @@
             <div class="carousel-item active">
         
               <img class="d-block w-100" src="https://farm5.static.flickr.com/4530/26749582429_ddd272d6f0_b.jpg"
-                alt="First slide" height="200">
+                alt="First slide" >
           
-          
+                <div class="carousel-caption d-none d-md-block" id="mt">
+                    <h5 id="h5"> <strong> Welcome <br> <br> We have the most delicious Pizza for You</strong></h5>
+                    <div class="text-center header mt-5">
+                        <form class="w-100 mt-4" action="{% url 'search_results' %}">
+                          <input class="w-50 p-3" type="search" placeholder="Search_activity_by_Category" name="image" aria-label="Search">
+                          
+                        </form>
+                        <div class="suggested"> <br>
+                          <p id="suggest"><strong> Suggested: Yoga , Golf , Cricket , Football,Volleyball,Basketball... </strong>  </p>
+                  
+                        </div>
+                      </div>
+                  </div>
                 
             </div>
           </div>
         </div>
       
-
-
     <div class="row">
       {% for image in all_images %}
       <div class="col-md-3">
