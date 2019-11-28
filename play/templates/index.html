@@ -145,23 +145,25 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="title-box text-center">
-          <h3 class="title-a"> Fitness Event and Venue</h3>
+        <div class="title-box text-center"><br><br>
+          <h3 class="title-a" style="font-family: 'Tomorrow', sans-serif;"> Fitness Event and Venue</h3><br><br>
           <div class="line-mf"></div>
         </div>
       </div>
-      {% endfor %}
     </div>
-<<<<<<< HEAD
+
     <div class="row">
       {% for image in all_images %}
       <div class="col-md-4">
         <div class="work-box">
-          <a href="{{image.photo.url}}" data-lightbox="gallery-mf">
+            <h6 class="text-center" style="font-family: 'Tomorrow', sans-serif;font-size: 20px">{{image.category}}</h6>
+          <a href="{% url 'detail' image.id %}" data-lightbox="gallery-mf">
             <div class="work-img">
-              <img src="{{image.photo.url}}" alt="" class="img-fluid">
+                
+              <img src="{{image.photo.url}}" alt="" class="img-fluid" style="width:200%;height:200%">
+             
             </div>
-            <div class="work-content">
+            <!-- <div class="work-content">
               <div class="row">
                 <div class="col-sm-8">
                   <h2 class="w-title">Lorem impsum dolor</h2>
@@ -175,7 +177,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </a>
         </div>
       </div> 
@@ -183,12 +185,7 @@
     </div>
   </div>
 </section>
-<!--  -->
-=======
 
-    
-  
->>>>>>> 428edf7456492c89e5f4b1079346b04375d87b80
   {% block scripts %}
 <!-- JavaScript Libraries -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
