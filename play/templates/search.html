@@ -14,13 +14,17 @@
 body{
     background-color: #95A5A6 ;
 }
+h2{
+    color: white;
+    margin-left: 20%;
+}
 </style>
 <body>
     <div class="container"> <br> <br> <br> <br> <br> <br>
 
         <div class="row">
             {% if activitiess%}
-            <h2>Found searched term. {{message}}</h2>
+            <h2>Searched term: {{message}}</h2>
             {% else %}
             <h2> Found 0 activities for the search term. {{message}}</h2>
             {% endif %}
