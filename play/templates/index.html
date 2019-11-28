@@ -3,11 +3,24 @@
 {% load bootstrap4 %}
 {% load static%}
 {{block.super}}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block styles %}
+
+<!-- Favicons -->
+<link href="img/favicon.png" rel="icon">
+<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Bootstrap CSS File -->
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
-
-{% block styles %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% bootstrap_css %}
 {% endblock %}
 
@@ -25,17 +38,73 @@
  
 
   }
+  #mt{
+    margin-bottom: 10%;    
+  }
   #h5{
-    color: #ECF0F1;
-    margin-bottom: 25%;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 30px;
+  color: #fff;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 50px;
+  font-family: 'Source Code Pro', monospace;    
     
   }
-  /* #mt{
-    margin-top: -20%;
-    
-  } */
+  #suggest{
+    color: #fff;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 20px;
+  font-family: 'Source Code Pro', monospace; 
+  }
+  .work-box {
+  margin-bottom: 3rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: #fff;
+}
+
+.work-box:hover img {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.work-img {
+  display: block;
+  overflow: hidden;
+}
+
+.work-img img {
+  transition: all 1s;
+}
+
+.work-content {
+  padding: 2rem 3% 1rem 4%;
+}
+
+.work-content .w-more {
+  color: #4e4e4e;
+  font-size: .8rem;
+}
+
+.work-content .w-more .w-ctegory {
+  color: #0078ff;
+}
+
+.work-content .w-like {
+  font-size: 2.5rem;
+  color: #0078ff;
+  float: right;
+}
+
+.work-content .w-like a {
+  color: #0078ff;
+}
+
+.work-content .w-like .num-like {
+  font-size: .7rem;
+}
+
+.w-title {
+  font-size: 1.2rem;
+}
 
 </style>
 
@@ -54,10 +123,10 @@
                 alt="First slide" >
           
                 <div class="carousel-caption d-none d-md-block" id="mt">
-                    <h5 id="h5"> <strong> Welcome <br> <br> We have the most delicious Pizza for You</strong></h5>
+                    <h5 id="h5"> <strong> Welcome to Fitness Events And Venue</strong></h5>
                     <div class="text-center header mt-5">
                         <form class="w-100 mt-4" action="{% url 'search_results' %}">
-                          <input class="w-50 p-3" type="search" placeholder="Search_activity_by_Category" name="image" aria-label="Search">
+                          <input class="w-50 p-3" type="search" placeholder="Search_activity_by_Category" name="activities" aria-label="Search">
                           
                         </form>
                         <div class="suggested"> <br>
@@ -71,26 +140,63 @@
           </div>
         </div>
       
+<!--  -->
+<section id="work" class="portfolio-mf sect-pt4 route">
+  <div class="container">
     <div class="row">
-      {% for image in all_images %}
-      <div class="col-md-3">
-        <div class="col-md-12 col-md-offset-1 col-sm-12">
-          <div style="margin-bottom: 5px;">
-            <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
-              alt="Image">
-
-            <a href="{% url 'detail' image.id%}" class="panel panel-footer"> <button>view details</button> </a>
-
-          </div>
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <h3 class="title-a"> Fitness Event and Venue</h3>
+          <div class="line-mf"></div>
         </div>
       </div>
     </div>
-
-    {% endfor %}
-  
+    <div class="row">
+      {% for image in all_images %}
+      <div class="col-md-4">
+        <div class="work-box">
+          <a href="{{image.photo.url}}" data-lightbox="gallery-mf">
+            <div class="work-img">
+              <img src="{{image.photo.url}}" alt="" class="img-fluid">
+            </div>
+            <div class="work-content">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h2 class="w-title">Lorem impsum dolor</h2>
+                  <div class="w-more">
+                    <span class="w-ctegory">Web Design</span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="w-like">
+                    <span class="ion-ios-plus-outline"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div> 
+      {% endfor %}       
+    </div>
+  </div>
+</section>
+<!--  -->
   {% block scripts %}
+<!-- JavaScript Libraries -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/popper/popper.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/counterup/jquery.waypoints.min.js"></script>
+<script src="lib/counterup/jquery.counterup.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/typed/typed.min.js"></script>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+
   {% bootstrap_javascript %} {% endblock %}
 </body>
 
