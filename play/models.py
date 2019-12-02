@@ -6,11 +6,21 @@ from django.dispatch import receiver
 
 class Location(models.Model):
     location_name = models.CharField(max_length=30, unique=True)
+    
     def __str__(self):
             return self.location_name
 
     def save_location(self):
         self.save()
+class Sector (models.Model):
+    sector_name = models.CharField(max_length=30, unique=True)
+    location = models.ForeignKey(Location)
+    def __str__(self):
+            return self.sector_name
+
+    def save_sector_name(self):
+        self.save()
+
 class Category(models.Model):
 
     """ class to indicate the category of the Playground"""
