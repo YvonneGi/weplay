@@ -133,9 +133,7 @@ def chat(request,team_id):
 
 
 def message(request):
-    message = request.POST.get('your_message')
-   
-
+    message = request.POST.get('your_message') 
     recipient = MessageRecipients(message=message)
     recipient.save()
     # send_welcome_email(name, email)
