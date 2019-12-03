@@ -13,19 +13,13 @@ def home(request):
     current_user = request.user
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
-<<<<<<< HEAD
     sectors = Sector.objects.all()
-=======
->>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     post = Events.objects.all()
     blog = Blog.objects.all()
     locations = Location.objects.all()
-<<<<<<< HEAD
-=======
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,
     "post":post,"locations":locations,"blog":blog})
 
->>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     chats=Chat.objects.all()
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations, "chat":chat, "sectors":sectors})
 
