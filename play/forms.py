@@ -9,10 +9,10 @@ class TeamForm (forms.ModelForm):
          model = Team
 
          exclude = ['ground']
-class NewPostForm(forms.ModelForm):
-    class Meta:
-        model = Events
-        exclude = ['posted_by','poster']
+# class NewPostForm(forms.ModelForm):
+#     class Meta:
+#         model = Events
+#         exclude = ['posted_by','poster']
 
 class NewBlogForm(forms.ModelForm):
     class Meta:
@@ -23,4 +23,10 @@ class ChatForm (forms.ModelForm):
     class Meta:
         model = Chat
         exclude = ['username','team']
+
+
+class CommentForm (forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['username',' poster']
      

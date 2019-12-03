@@ -120,6 +120,7 @@ DATABASES = {
         'NAME': 'weplay',
         'USER': 'wecode',
         'PASSWORD':'juruyuly1',
+        
     }
 }
 
