@@ -9,12 +9,11 @@ class Location(models.Model):
     
     def __str__(self):
             return self.location_name
-
     def save_location(self):
         self.save()
+      
 class Sector (models.Model):
     sector_name = models.CharField(max_length=30, unique=True)
-    location = models.ForeignKey(Location)
     def __str__(self):
             return self.sector_name
 
@@ -49,9 +48,9 @@ class Category(models.Model):
 class Fitness_activities(models.Model):
     photo = models.ImageField(upload_to = 'images/')
     description = models.CharField(max_length=3000)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    post_date=models.DateTimeField(auto_now_add=True)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     category = models.ForeignKey(Category)
+    
 
     def __str__(self):
         return self.description
@@ -64,9 +63,10 @@ class Fitness_activities(models.Model):
         ''' Method to update an image in the database'''
         self.update()
     @classmethod
-    def search_by_category(cls,search_term):
-        activities = cls.objects.filter(category__cat_name__contains=search_term)
-        return activities
+    def search_by_sector(cls,search_term):
+        sectors = cls.objects.filter(sector__sector_name__icontains=search_term)
+        # activities = cls.objects.filter(loca__location_name__contains=search_term)
+        return sectors    
     def delete_image(self):
         ''' Method to delete an image from the database'''
         self.delete()
@@ -75,9 +75,9 @@ class Fitness_activities(models.Model):
         playground = cls.objects.get(id=activities_id)
         return playground
     @classmethod
-    def filter_location(cls,location):
-        filter_loc = cls.objects.filter(location__location_name__icontains=location)
-        return filter_loc
+    def filter_sector(cls,sector):
+        filter_sect = cls.objects.filter(sector__sector_name__icontains=sector)
+        return filter_sect
 
 class Team(models.Model):
     t_name = models.CharField(max_length = 400)
