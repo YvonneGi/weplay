@@ -25,77 +25,349 @@
     text-align: center;
 
   }
-  img{
+
+  img {
     height: 100vh;
- 
+
 
   }
-  #mt{
-    margin-bottom: 10%;    
+
+  #mt {
+    margin-bottom: 10%;
   }
-  #h5{
-  color: #fff;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-size: 50px;
-  font-family: 'Source Code Pro', monospace;    
-    
+
+  #h5 {
+    /* color: #fff; */
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+    font-size: 50px;
+    font-family: 'Source Code Pro', monospace;
+
   }
-  #suggest{
+
+  #suggest {
     color: #fff;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-size: 20px;
-  font-family: 'Source Code Pro', monospace; 
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
   }
+
   .work-box {
-  margin-bottom: 3rem;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  background-color: #fff;
+    margin-bottom: 3rem;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+  }
+
+  .work-box:hover img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+
+  .work-img {
+    display: block;
+    overflow: hidden;
+  }
+
+  .work-img img {
+    transition: all 1s;
+  }
+
+  .work-content {
+    padding: 2rem 3% 1rem 4%;
+  }
+
+  .work-content .w-more {
+    color: #4e4e4e;
+    font-size: .8rem;
+  }
+
+  .work-content .w-more .w-ctegory {
+    color: #0078ff;
+  }
+
+  .work-content .w-like {
+    font-size: 2.5rem;
+    color: #0078ff;
+    float: right;
+  }
+
+  .work-content .w-like a {
+    color: #0078ff;
+  }
+
+  .work-content .w-like .num-like {
+    font-size: .7rem;
+  }
+
+  .w-title {
+    font-size: 1.2rem;
+  }
+
+/*  */
+/* Team Section
+--------------------------------*/
+
+#team {
+  background: #fff;
+  padding: 60px 0;
 }
 
-.work-box:hover img {
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
+#team .member {
+  text-align: center;
+  margin-bottom: 20px;
+  background: #000;
+  position: relative;
 }
 
-.work-img {
+#team .member .member-info {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.2s;
+}
+
+#team .member .member-info-content {
+  margin-top: -50px;
+  transition: margin 0.2s;
+}
+
+#team .member:hover .member-info {
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  transition: 0.4s;
+}
+
+#team .member:hover .member-info-content {
+  margin-top: 0;
+  transition: margin 0.4s;
+}
+
+#team .member h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #fff;
+}
+
+#team .member span {
+  font-style: italic;
   display: block;
-  overflow: hidden;
+  font-size: 13px;
+  color: #fff;
 }
 
-.work-img img {
-  transition: all 1s;
+#team .member .social {
+  margin-top: 15px;
 }
 
-.work-content {
-  padding: 2rem 3% 1rem 4%;
+#team .member .social a {
+  transition: none;
+  color: #fff;
 }
 
-.work-content .w-more {
-  color: #4e4e4e;
-  font-size: .8rem;
+#team .member .social a:hover {
+  color: #18d26e;
 }
 
-.work-content .w-more .w-ctegory {
-  color: #0078ff;
+#team .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+.img-fluid{
+  height: 100%;
+  width: 100%;
+}
+.d-block w-100{
+  
+    position: relative;
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+    display: block;
+    /* background: rgba(0, 0, 0, .6); */
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#footer {
+  background: #000;
+  padding: 0 0 30px 0;
+  color: #eee;
+  font-size: 14px;
 }
 
-.work-content .w-like {
-  font-size: 2.5rem;
-  color: #0078ff;
-  float: right;
+#footer .footer-top {
+  background: #111;
+  padding: 60px 0 30px 0;
 }
 
-.work-content .w-like a {
-  color: #0078ff;
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
 }
 
-.work-content .w-like .num-like {
-  font-size: .7rem;
+#footer .footer-top .footer-info h3 {
+  font-size: 34px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 10px;
+  line-height: 1;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border-left: 4px solid #18d26e;
 }
 
-.w-title {
-  font-size: 1.2rem;
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #eee;
+}
+
+#footer .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #eee;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .footer-top .social-links a:hover {
+  background: #18d26e;
+  color: #fff;
+}
+
+#footer .footer-top h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-top h4::before,
+#footer .footer-top h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+}
+
+#footer .footer-top h4::before {
+  right: 0;
+  background: #555;
+}
+
+#footer .footer-top h4::after {
+  background: #18d26e;
+  width: 60px;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 8px;
+  color: #ddd;
+}
+
+#footer .footer-top .footer-links ul li {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #eee;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  color: #18d26e;
+}
+
+#footer .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-contact p {
+  line-height: 26px;
+}
+
+#footer .footer-top .footer-newsletter {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-newsletter input[type="email"] {
+  border: 0;
+  padding: 6px 8px;
+  width: 65%;
+}
+
+#footer .footer-top .footer-newsletter input[type="submit"] {
+  background: #18d26e;
+  border: 0;
+  width: 35%;
+  padding: 6px 0;
+  text-align: center;
+  color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#footer .footer-top .footer-newsletter input[type="submit"]:hover {
+  background: #13a456;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+}
+
+#footer .credits {
+  text-align: center;
+  font-size: 13px;
+  color: #ddd;
 }
 
 </style>
@@ -104,18 +376,21 @@
 
 
 <body>
-      <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
-  
-          <div class="carousel-inner" role="listbox">
-        
-            <div class="carousel-item active">
-        
-              <img class="d-block w-100" src="https://farm5.static.flickr.com/4530/26749582429_ddd272d6f0_b.jpg"
-                alt="First slide" >
+
+    <div class="carousel-inner" role="listbox">
+
+      <div class="carousel-item active">
+
+        <!-- <img class="d-block w-100" src="https://farm5.static.flickr.com/4530/26749582429_ddd272d6f0_b.jpg"
+          alt="First slide"> -->
+          <img class="d-block w-100" src="static/image/wallpaper.jpg"
+          alt="First slide" >
           
+
                 <div class="carousel-caption d-none d-md-block" id="mt">
-                    <h5 id="h5"> <strong> Welcome to Fitness Events And Venue</strong></h5>
+                  <h5 id="h5" style="color:#666633;"> <strong> Be Fit </strong></h5>
                     <div class="text-center header mt-5">
                         <form class="w-100 mt-4" action="{% url 'search_sector' %}">
                           <input class="w-50 p-3" type="search" placeholder="Enter Your Sector" name="sectors" aria-label="Search">
@@ -128,49 +403,136 @@
                       </div>
                   </div>
                 
+
             </div>
           </div>
         </div>
-      
-<!--  -->
-<section id="work" class="portfolio-mf sect-pt4 route">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="title-box text-center"><br><br>
-          <h3 class="title-a" style="font-family: 'Tomorrow', sans-serif;"> Fitness Event and Venue</h3><br><br>
-          <div class="line-mf"></div>
-        </div>
+
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      {% for image in all_images %}
-      <div class="col-md-4">
-        <div class="work-box">
-            <h6 class="text-center" style="font-family: 'Tomorrow', sans-serif;font-size: 20px">{{image.category}}</h6>
-          <a href="{% url 'detail' image.id %}" data-lightbox="gallery-mf">
-            <div class="work-img">
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team">
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="title-box text-center"><br><br>
+                  <h3 class="title-a" style="font-family: 'Tomorrow', sans-serif;"> Fitness Activities </h3><br><br>
                 
-              <img src="{{image.photo.url}}" alt="" class="img-fluid" style="width:200%;height:200%">
-             
-            </div>
-            <!-- <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title">Lorem impsum dolor</h2>
-                  <div class="w-more">
-                    <span class="w-ctegory">Web Design</span>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <span class="ion-ios-plus-outline"></span>
-                  </div>
                 </div>
               </div>
-            </div> -->
-          </a>
+            </div>
+        <div class="section-header wow fadeInUp">
+          
+          
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img  style=" height: 100%;
+              width: 100%;" src="static/image/golfe.jpg" class="img-thumbnail" alt="" >
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Golfe</h4>
+                  <span>Golf is a game played in an open field</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img  style=" height: 100%;
+              width: 100%;" src="static/image/gym.jpg" class="img-thumbnail" alt="" >
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Gym</h4>
+                  <span>A gymnasium, also known as a gym, is a covered location for gymnastics, athletics and gymnastic services.</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/play2.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Basketball</h4>
+                  <span>Two teams of five players each try to score by shooting a ball through a hoop</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/valley.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Volleyball</h4>
+                  <span>is a team sport in which two teams of six players are separated by a net</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/pussine.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Swimming pool</h4>
+                  <span>movement of the body through water using arms and legs</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/cricke.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Cricket</h4>
+                  <span>played between two teams of eleven players each who score runs (points)</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/foot.jpeg" class="img-thumbnail" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Football</h4>
+                  <span>using any part of their bodies except their hands and arms</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="static/image/tenis1.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Tenis</h4>
+                  <span>sport that can be played individually</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div> 
       {% endfor %}       

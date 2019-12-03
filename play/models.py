@@ -96,6 +96,7 @@ class Team(models.Model):
     def delete_name(self):
         ''' Method to delete an team name from the database'''
         self.delete()
+
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='photos/',null=True)
     fullname = models.CharField(max_length=255,null=True)
@@ -153,8 +154,41 @@ class Events (models.Model):
         return posts
 
     @classmethod
-    def all_event(cls,id):
-        posts = Events.objects.all()
+    def all_event(cls,event_id):
+        posts = cls.objects.get(id=event_id)
         return posts
 
+        self.delete()
+
+class Blog (models.Model):
+    image = models.ImageField(upload_to = 'images/')
+    title = models.CharField(max_length=30)
+    blog_description = models.TextField(max_length=300)
+    posted_by = models.CharField(max_length=30)
+    poster = models.ForeignKey(Fitness_activities)
+
+    @classmethod
+    def get_blog(cls, post_blog):
+        blogs = Blog.objects.filter(post_blog=id)
+        return blogs
+
+    @classmethod
+    def all_blogs(cls,id):
+        blogs = Blog.objects.all()
+        return blogs
+
+        self.delete()
+
+class Comment(models.Model):
+    comment_content = models.CharField(max_length=300)
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    poster = models.ForeignKey(Fitness_activities,on_delete=models.CASCADE)
+
+    def save_comment(self):
+        '''Method to save a comment in the database'''
+        self.save()
+
+    def delete_comment(self):
+
+        ''' Method to delete a comment from the database'''
         self.delete()

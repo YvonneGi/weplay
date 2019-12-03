@@ -13,9 +13,19 @@ def home(request):
     current_user = request.user
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
+<<<<<<< HEAD
     sectors = Sector.objects.all()
+=======
+>>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     post = Events.objects.all()
+    blog = Blog.objects.all()
     locations = Location.objects.all()
+<<<<<<< HEAD
+=======
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,
+    "post":post,"locations":locations,"blog":blog})
+
+>>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     chats=Chat.objects.all()
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations, "chat":chat, "sectors":sectors})
 
@@ -50,11 +60,20 @@ def all_playgrounds(request,activities_id):
     playg = Fitness_activities.objects.get(id=activities_id)
     
     return render(request, 'index.html', {"images": images,"activities_id":activities_id})
+
+# def all_events(request):
+#     events = Events.objects.all()
+    
+#     return render(request, 'details.html', {"events": events})
+
+
 def detail(request,image_id):
         image = Fitness_activities.objects.get(id = image_id)
         team = Team.objects.filter(ground=image_id)
-        post = Events.objects.filter(poster=image_id)
-        return render(request,"details.html", {"image":image, "team":team,"post":post})
+        post = Events.objects.all()
+        blog = Blog.objects.filter(poster=image_id)
+       
+        return render(request,"details.html", {"image":image, "team":team,"post":post,"blog":blog})
 
 def create_team(request,activities_id):
     current_user = request.user
@@ -82,29 +101,52 @@ def search_sector(request):
         
         search_term = request.GET.get("sectors")
         searched_sector = Fitness_activities.search_by_sector(search_term)
+
         message = f"{search_term}"
 
         return render(request, 'search.html',{"message":message,"searched_sector": searched_sector,"fitness":fitness ,"sectors":sectors})
 
     else:
+
         message = "You haven't searched for any Sector"
         return render(request, 'search.html',{"message":message})
     
 def new_post(request,activities_id):
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message,'locations':locations})
+
+# def new_post(request,activities_id):
+#     current_user = request.user
+#     news= Fitness_activities.objects.get(id=activities_id)
+#     if request.method == 'POST':
+#         form = NewPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.posted_by = current_user
+#             post.poster = news
+#             post.save()
+#         return redirect('detail', activities_id)
+
+#     else:
+#         form = NewPostForm()
+#     return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
+
+def new_blog(request,activities_id):
     current_user = request.user
     news= Fitness_activities.objects.get(id=activities_id)
     if request.method == 'POST':
-        form = NewPostForm(request.POST, request.FILES)
+        form = NewBlogForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.posted_by = current_user
-            post.poster = news
-            post.save()
+            blog = form.save(commit=False)
+            blog.posted_by = current_user
+            blog.poster = news
+            blog.save()
         return redirect('detail', activities_id)
 
     else:
-        form = NewPostForm()
-    return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
+        form = NewBlogForm()
+    return render(request, 'new_blog.html', {"form": form, "activities_id": activities_id})
+
 
 def page_location(request,sector):
     sectors = Sector.objects.all()
@@ -143,3 +185,44 @@ def message(request):
     # send_welcome_email(name, email)
     data = {'success': 'Your message is sent'}
     return JsonResponse(data)
+
+
+# @login_required(login_url='/accounts/login/')
+# def comment(request,activities_id):
+#     current_user = request.user
+#     comments = Fitness_activities.objects.get(id=activities_id)
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             activities_id = int(request.POST.get("idpost"))
+#             post = Fitness_activities.objects.get(id = activities_id)
+#             comment = form.save(commit=False)
+#             comment.username = request.user
+#             comment.post = post
+#             comment.save()
+#         return redirect('detail')
+
+#     else:
+#         form = CommentForm()
+
+#     return render(request,'details.html',{"comments":comments,"current_user":current_user})
+
+# @login_required(login_url='/accounts/login/')
+# def comment(request,activities_id):
+#     current_user = request.user
+#     activitiess = Fitness_activities.objects.all()
+#     activities = Fitness_activities.objects.get(id = activities_id)
+#     comments = Comments.objects.filter(activity=activities.id)
+    
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.username = request.user
+#             comment.activity = activity
+#             comment.save()
+#         return redirect('detail',activities_id)
+
+#     else:
+#         form = CommentForm()
+#     return render(request,'detail.html',{"current_user":current_user,"comments":comments,"form":form,"activities_id":activities_id,"activitiess":activitiess})
