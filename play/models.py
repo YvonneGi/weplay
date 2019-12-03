@@ -154,8 +154,8 @@ class Events (models.Model):
         return posts
 
     @classmethod
-    def all_event(cls,id):
-        posts = Events.objects.all()
+    def all_event(cls,event_id):
+        posts = cls.objects.get(id=event_id)
         return posts
 
         self.delete()
@@ -177,4 +177,18 @@ class Blog (models.Model):
         blogs = Blog.objects.all()
         return blogs
 
+        self.delete()
+
+class Comment(models.Model):
+    comment_content = models.CharField(max_length=300)
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    poster = models.ForeignKey(Fitness_activities,on_delete=models.CASCADE)
+
+    def save_comment(self):
+        '''Method to save a comment in the database'''
+        self.save()
+
+    def delete_comment(self):
+
+        ''' Method to delete a comment from the database'''
         self.delete()

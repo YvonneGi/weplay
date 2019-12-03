@@ -9,78 +9,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
   <title>Chat</title>
-  {% block styles %} {% bootstrap_css %} {% endblock %}
+  {% block styles %} {% bootstrap_css %} 
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  {% endblock %}
 
 </head>
-  <body>
-      {% block content %}
 
-<style>
-    body{
+<body>
+  {% block content %}
+
+  <style>
+    /* body{
       background-color: #95A5A6;
       
-    }
-    .mt-2{
-      border:1px  ;
+    } */
+    .mt-2 {
+      border: 1px;
       border-radius: 5%;
       width: 40%;
       height: 50%;
-      background-color: #AED6F1  ;
+      background-color: #AED6F1;
       margin-left: 20%;
     }
-    .btn{
+
+    .btn {
       margin-left: 30%;
       margin-top: -4%;
       /* background-color: black; */
 
     }
-    form{
+
+    form {
       border-radius: 20%;
-      width:100%;
-      height:10%;
-      margin-left:0%
+      width: 100%;
+      height: 10%;
+      margin-left: 0%
     }
+
+    .carousel-item {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),#61892F ;
+            text-align: center;
+            height: 250px;
+        }
   </style>
   <div class="container"> <br> <br> <br><br><br>
-    <h1 style="color: white;margin-left: 20%;" >Hi.Chat with us!</h1>
-      <div class="row justify-content-center h-100">
-      <div class="card-body" >
+
+    <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;text-align: center;"> TESTIMONIALS </h3>
+
+    <!--  -->
+    <div class="img-fluid">
+      <div id="demo" class="carousel slide" data-interval="2000" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" id="car">
+          <div class="carousel-item active">
+            <h2 style="color: white;">Slide 1</h2>
+            <div class="carousel-caption">
+              <h3>This is the First Label</h3>
+              <p>The Content of the First Slide goes in here</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <h2 style="color: white;">Slide 2</h2>
+            <div class="carousel-caption">
+              <h3>This is the Second Label</h3>
+              <p>The Content of the second Slide goes in here</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <h2 style="color: white;">Slide 3</h2>
+            <div class="carousel-caption">
+              <h3>This is the Third Label</h3>
+              <p>The Content of the Third Slide goes in here</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+    <!--------->
+    <h4 style="margin-left: 20%;">You want it?Get it!</h4>
+    <div class="row justify-content-center h-100">
+      <div class="card-body">
         <div class="card-footer-section">
           </br>
           <div id="card{{team.id}}" class="mt-2">
             {%for chat in chats %}
 
             <p>
-              
+
               <div class="col-md-3">
                 {% if user.profile_pic %}
                 <img src="{{user.profile_pic.url}}" alt="" width="20" height="20">
                 {% else %}
                 <span><img
-                  src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
-                  alt="" width="20" height="20"><strong><em>{{chat.username.username}}</em></strong> </span> 
+                    src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
+                    alt="" width="20" height="20"><strong><em>{{chat.username.username}}</em></strong> </span>
                 {% endif %}
               </div> <br>
               <span style="background-color:#F3F3F5;margin-left: 10%;padding: 10px;border-radius: 25px;position: relative;
               margin-top: auto;margin-bottom: auto;">{{chat.message}}</span>
-              
-               
-              </p>
+
+
+            </p>
             {%endfor%}
-          
-            <form action="{%url 'chat' team_id%}" method="post" enctype="multipart/form-data" >
+
+            <form action="{%url 'chat' team_id%}" method="post" enctype="multipart/form-data">
               {%csrf_token%}
               {% bootstrap_form form layout='inline' %}
-             <input type="submit" name="idteam"  value="Send" placeholder="Type your message..." class="btn btn-success btn-lg">
+              <input type="submit" name="idteam" value="Send" placeholder="Type your message..."
+                class="btn btn-success btn-lg">
             </form>
-           
+
           </div>
 
         </div>
@@ -93,6 +151,20 @@
 
   {% block scripts %} {{block.super}}
   <script type="text/javascript" src="{%static 'js/chat.js'%}"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <!-- Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
   {% endblock %}
 
   {% endblock %}

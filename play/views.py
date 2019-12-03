@@ -50,11 +50,19 @@ def all_playgrounds(request,activities_id):
     playg = Fitness_activities.objects.get(id=activities_id)
     
     return render(request, 'index.html', {"images": images,"activities_id":activities_id})
+
+# def all_events(request):
+#     events = Events.objects.all()
+    
+#     return render(request, 'details.html', {"events": events})
+
+
 def detail(request,image_id):
         image = Fitness_activities.objects.get(id = image_id)
         team = Team.objects.filter(ground=image_id)
-        post = Events.objects.filter(poster=image_id)
+        post = Events.objects.all()
         blog = Blog.objects.filter(poster=image_id)
+       
         return render(request,"details.html", {"image":image, "team":team,"post":post,"blog":blog})
 
 def create_team(request,activities_id):
@@ -76,6 +84,7 @@ def create_team(request,activities_id):
         form = TeamForm()
         
     return render(request, 'team.html', {"form": form,"activities_id":activities_id})
+
 def search_results(request):
     locations = Location.objects.all()
     if 'activities' in request.GET and request.GET["activities"]:
@@ -88,21 +97,22 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message,'locations':locations})
-def new_post(request,activities_id):
-    current_user = request.user
-    news= Fitness_activities.objects.get(id=activities_id)
-    if request.method == 'POST':
-        form = NewPostForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.posted_by = current_user
-            post.poster = news
-            post.save()
-        return redirect('detail', activities_id)
 
-    else:
-        form = NewPostForm()
-    return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
+# def new_post(request,activities_id):
+#     current_user = request.user
+#     news= Fitness_activities.objects.get(id=activities_id)
+#     if request.method == 'POST':
+#         form = NewPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.posted_by = current_user
+#             post.poster = news
+#             post.save()
+#         return redirect('detail', activities_id)
+
+#     else:
+#         form = NewPostForm()
+#     return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
 
 def new_blog(request,activities_id):
     current_user = request.user
@@ -158,3 +168,44 @@ def message(request):
     # send_welcome_email(name, email)
     data = {'success': 'Your message is sent'}
     return JsonResponse(data)
+
+
+# @login_required(login_url='/accounts/login/')
+# def comment(request,activities_id):
+#     current_user = request.user
+#     comments = Fitness_activities.objects.get(id=activities_id)
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             activities_id = int(request.POST.get("idpost"))
+#             post = Fitness_activities.objects.get(id = activities_id)
+#             comment = form.save(commit=False)
+#             comment.username = request.user
+#             comment.post = post
+#             comment.save()
+#         return redirect('detail')
+
+#     else:
+#         form = CommentForm()
+
+#     return render(request,'details.html',{"comments":comments,"current_user":current_user})
+
+# @login_required(login_url='/accounts/login/')
+# def comment(request,activities_id):
+#     current_user = request.user
+#     activitiess = Fitness_activities.objects.all()
+#     activities = Fitness_activities.objects.get(id = activities_id)
+#     comments = Comments.objects.filter(activity=activities.id)
+    
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.username = request.user
+#             comment.activity = activity
+#             comment.save()
+#         return redirect('detail',activities_id)
+
+#     else:
+#         form = CommentForm()
+#     return render(request,'detail.html',{"current_user":current_user,"comments":comments,"form":form,"activities_id":activities_id,"activitiess":activitiess})

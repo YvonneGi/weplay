@@ -9,11 +9,32 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="w3.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<!-- <style>
-  body {
+<style>
+  /* body {
     background-color: #95A5A6;
+  } */
+
+  .image {
+    height: 50%;
+    width: 15%;
+    display: flex;
+    float: left;
+    /* padding: 5%; */
+    margin-right: 2%;
   }
-</style> -->
+  .card{
+    width: 120%;
+  }
+  h3{
+    margin-left: 20%;
+  }
+  a:hover,button{
+    color: black;
+  }
+  button{
+    background-color: #fff;
+  }
+</style>
 {% endblock %}
 
 <body>
@@ -28,192 +49,180 @@
 
         <!-- <span class="w3-right w3-opacity"> -->
 
-        <img src="{{image.photo.url}}" class="w3-margin-bottom" width="100%">
-        <h1 class="text-center">{{image.category}}</h1>
+        <img src="{{image.photo.url}}" class="" width="100%">
+        <h1 class="text-center" style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">{{image.category}}</h1>
         <p class="text-center">Location:{{image.location}}</p>
         <p class="text-center">{{image.description}}</p>
         <!-- </span> -->
         <!-- </div> -->
         <!-- </div> -->
       </div>
-    </div><br><br><br>
+    </div>
+  </div>
+  <br><br><br>
+
+
+  <div class="container">
     <div class="row">
 
-      <div class="col-md-4">
-        <div class="w3-container">
+      <!-- <div class="col-md-2"> -->
+      <!-- <div class="w3-container"> -->
+      <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">
+          Bog Posts</button> -->
 
-          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">
-            Bog Posts</button>
+      <!-- <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+              <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+              <h2>Blog Posts</h2>
+            </header>
+            <div class="w3-container">
+              <h2 class="font-weight-bold text-uppercase mb-4">{{blogs.title}}</h2>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+            </div>
 
-          <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-animate-top w3-card-4">
-              <header class="w3-container w3-teal">
-                <span onclick="document.getElementById('id01').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-                <h2>Blog Posts</h2>
-              </header>
-              <div class="w3-container">
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-              </div>
+          </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- <div class="col-md-4">
+          <div class="w3-container"> -->
+
+      <!-- <button onclick="document.getElementById('id01').style.display='block'"
+          class="w3-button w3-black">Events</button>
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+              <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+              <h2>Events</h2>
+            </header>
+            <div class="w3-container">
+
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+            </div>
+
+          </div>
+        </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- <div class="col-md-4">
+          <div class="w3-container"> -->
+      <!-- <button onclick="document.getElementById('id01').style.display='block'"
+          class="w3-button w3-black">Review</button>
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+              <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+              <h2>Review</h2>
+            </header>
+            <div class="w3-container">
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
+              <p>Some text..</p>
 
             </div>
+
           </div>
-        </div>
+        </div> -->
+      <!-- </div>
+        </div> -->
+      <!-- </div> -->
+
+      <br><br>
+      <div class="col-md-9">
+        <!-- <div class="w3-container w3-content"> -->
+
+        <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Blog posts</h3><br> <br>
+        <div class="row ">
+          {% for blogs in blog %}
+          <!-- <div class="col-md-4 mb-5"> -->
+
+          <div class="blog">
+            <h5 class="font-weight-bold ">{{blogs.title}}</h5>
+            <img src="{{blogs.image.url}}" class="image">
+            <p class="" id="aboutme">{{blogs.blog_description}} </p>
+            <p class="" id="aboutme">Posted by: {{blogs.posted_by}} </p>
+          </div>
+          <!-- </div> -->
+          {%endfor%}
+        </div><br>
+
+        <div class="row">
+          <a href="{%url 'new_blog' image.id %}" class="btn btn-sm"><button>create Blog</button></a>
+        </div><br><br>
       </div>
-      <div class="col-md-4">
-        <div class="w3-container">
 
-          <button onclick="document.getElementById('id01').style.display='block'"
-            class="w3-button w3-black">Events</button>
-          <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-animate-top w3-card-4">
-              <header class="w3-container w3-teal">
-                <span onclick="document.getElementById('id01').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-                <h2>Events</h2>
-              </header>
-              <div class="w3-container">
+      <!-- <div class="row">
+        <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;color: #fff">Here there different events that
+          will happen in the area</h3>
+      </div>  -->
+      <br> <br>
 
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-              </div>
+
+      <br> <br>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="row">
+            <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Teams
+            </h3>
+          </div> <br><br>
+          <div class="w3-card-4">
+            {%for teams in team %}
+
+            <div class="">
+
+              <a href="{%url 'chat' teams.id %}">
+                <ul style="text-decoration: none;">
+                  <li>
+                    <p>{{teams.t_name}}</p>
+                  </li>
+                </ul>
+              </a>
 
             </div>
+
+
+            {%endfor%}
           </div>
+          <div class="row">
+            <a href="{%url 'create_team' image.id %}" class="btn btn-sm " style="margin-left: 20%"><button >create team</button></a>
+          </div><br><br>
+          <!-- <div class="col-md-4"> -->
+
+          <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Events
+          </h3><br>
+          <div class="w3-card-4">
+            {% for event in post %}
+            <div class=""> 
+                <h5 class="font-weight-bold" style="margin-left: 10%">* {{event.title}}</h5>
+                <!-- <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p> -->
+                <!-- <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p> -->
+              
+            </div>
+            {%endfor%}
+          </div>
+          
+         
         </div>
+        <br>
       </div>
-      <div class="col-md-4">
-        <div class="w3-container">
-          <button onclick="document.getElementById('id01').style.display='block'"
-            class="w3-button w3-black">Review</button>
-          <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-animate-top w3-card-4">
-              <header class="w3-container w3-teal">
-                <span onclick="document.getElementById('id01').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-                <h2>Review</h2>
-              </header>
-              <div class="w3-container">
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-                <p>Some text..</p>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-  <br><br>
-  <div class="w3-container w3-content">
-
-      <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;color: #fff">Blog posts</h3><br> <br>
-      <div class="row " data-wow-delay="0.4s">
-        {% for blogs in blog %}
-        <div class="col-md-4 mb-5">
-
-          <div class="card card-body hoverable">
-            <h2 class="font-weight-bold text-uppercase mb-4">{{blogs.title}}</h2>
-            <img src="{{blogs.image.url}}" class="w3-margin-bottom" width="100%">
-            <p class="dark-grey-text" id="aboutme">{{blogs.blog_description}} </p>
-            <p class="dark-grey-text" id="aboutme">Posted by: {{blogs.posted_by}} </p>
-          </div>
-        </div>
-        {%endfor%}
-      </div>
-    
-    <div class="row">
-
-      <a href="{%url 'new_blog' image.id %}" class="btn btn-sm btn-success"><button>add a blog</button></a>
-    </div>
-
-
-    <div class="row">
-      <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;color: #fff">Here there different events that
-        will happen in the area</h3>
-    </div> <br> <br>
-
-    <div class="row " data-wow-delay="0.4s">
-      {% for event in post %}
-      <div class="col-md-4 mb-5">
-
-        <div class="card card-body hoverable">
-          <h2 class="font-weight-bold text-uppercase mb-4">{{event.title}}</h2>
-          <p>--------------------------------</p>
-          <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p>
-          <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p>
-        </div>
-      </div>
-      {%endfor%}
-    </div>
-    <div class="row">
-
-      <a href="{%url 'new_post' image.id %}" class="btn btn-sm btn-success"><button>Post an Event Here</button></a>
-    </div> <br> <br>
-
-
-
-
-    <div class="row">
-      <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;color: #fff">Teams who usualy swim on this
-        pool!<br>
-        You can join them if you like.</h3>
-    </div> <br>
-    <div class="row " data-wow-delay="0.4s">
-      {%for teams in team %}
-      <div class="col-md-3 mb-5">
-
-        <div class="card card-body hoverable">
-          <a href="{%url 'chat' teams.id %}">
-            <h2>{{teams.t_name}}</h2>
-          </a>
-        </div>
-      </div>
-      {%endfor%}
-    </div>
-    <div class="row">
-      <a href="{%url 'create_team' image.id %}" class="btn btn-sm btn-success"><button>create team</button></a>
-    </div> <br>
   </div>
-  <div class="col-md-12 ">
-    
-      <div id="errormessage"></div>
-      <form action="" method="post" role="form" class="contactForm">
-        <div class="form-group">
-          <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-            data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-          <div class="validation"></div>
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-            data-rule="email" data-msg="Please enter a valid email" />
-          <div class="validation"></div>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-            data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-          <div class="validation"></div>
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" name="message" rows="5" data-rule="required"
-            data-msg="Please write something for us" placeholder="Message"></textarea>
-          <div class="validation"></div>
-        </div>
 
-        <div class="text-center"><button type="submit" class="contact submit">Send Message</button></div>
-      </form>
-    </div>
   <!-- </div>
   </div> -->
 </body>
