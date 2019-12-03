@@ -14,9 +14,13 @@ class NewPostForm(forms.ModelForm):
         model = Events
         exclude = ['posted_by','poster']
 
+class NewBlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        exclude = ['posted_by','poster']
+
 class ChatForm (forms.ModelForm):
     class Meta:
-         model = Chat
-
-         exclude = ['username','team']
+        model = Chat
+        exclude = ['username','team']
      

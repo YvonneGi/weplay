@@ -10,15 +10,6 @@
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Bootstrap CSS File -->
-<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Libraries CSS Files -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="lib/animate/animate.min.css" rel="stylesheet">
-<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -538,111 +529,16 @@
           </div>
 
         </div>
+      </div> 
+      {% endfor %}       
+    </div>
+  </div>
+</section>
 
-      </div>
-    </section><!-- #team -->
-  <!--  -->
-  <div class="row">
-      <div class="col-md-1"></div> 
-      <div class="col-md-3">
-          <img src="static/image/yoga.jpg" alt="img" style=" height: 100%;
-          width: 190%; margin-left: 5px;" ></div>
-  <div class="col-md-3"></div>
-      <div class="col-md-3">
-          <h2 style="font-family: 'Bad Script', cursive; color:#666633; ">About us </h2> 
-
-          <p id="about"> Sports is the best way to make yourself fit in all respects,It plays a vital role in our life as it keeps us healthy, wealthy and of course active. <br> it is also necessary to put more emphasis on Sports ,Despite the well known benefit of sport in our life ,a huge amount of people in rwanda don't exercise enough because, <br>
-            <ul>
-              <li> not knowing where to exercise from </li> <li> culture and financial stereotype </li> <li> shortage of fitness activities </li>
-                <li> lack of appropriate knowledge regarding fitness activities </li>   
-            </ul>
-            In terms of social interaction we decide to create a website that can help people to know and join the fitness activities nearby them.
-
-          </p>
-      </div>
-     
-      <div class="col-md-2"></div>
-  </div><br><br>
-  <!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-  
-            <div class="col-lg-3 col-md-6 footer-info">
-              <h3>Fitness</h3>
-              <p>Sports is the best way to make yourself fit in all respects,It plays a vital role in our life as it keeps us healthy, wealthy and of course active. <br> it is also necessary to put more emphasis on Sports ,Despite the well known benefit of sport in our life ,a huge amount of people don't exercise enough  </p>
-            </div>
-  
-            <div class="col-lg-3 col-md-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-                
-                <li><i class="ion-ios-arrow-right"></i> <a href="#">Profile</a></li>
-              </ul>
-            </div>
-  
-            <div class="col-lg-3 col-md-6 footer-contact">
-              <h4>Contact Us</h4>
-              <p>
-               <strong>Address: Kigali, Rwanda<br></strong> 
-                <strong>Email:</strong> kangabejuliette@gmail.com<br>
-              </p>
-  
-              <div class="social-links">
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-              </div>
-  
-            </div>
-  
-            <div class="col-lg-3 col-md-6 footer-newsletter">
-              <h4>Our Mission</h4>
-              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-              <form action="" method="post">
-                <input type="email" name="email"><input type="submit"  value="Subscribe">
-              </form>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-  
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong>Fitness Activities</strong>. All Rights Reserved
-        </div>
-        
-      </div>
-    </footer><!-- #footer -->
-      
- 
-
-    {% block scripts %}
-    <!-- JavaScript Libraries -->
-
-    <!-- <script src="js/script.js"></script> -->
-    <script type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/popper/popper.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/counterup/jquery.waypoints.min.js"></script>
-    <script src="lib/counterup/jquery.counterup.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-
-
-    {% bootstrap_javascript %} {% endblock %}
+  {% block scripts %}
+<!-- JavaScript Libraries -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
 </body>
 
 

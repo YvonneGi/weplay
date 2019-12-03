@@ -13,10 +13,11 @@ def home(request):
     current_user = request.user
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
-
     post = Events.objects.all()
+    blog = Blog.objects.all()
     locations = Location.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations})
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,
+    "post":post,"locations":locations,"blog":blog})
 
     chats=Chat.objects.all()
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
@@ -53,7 +54,8 @@ def detail(request,image_id):
         image = Fitness_activities.objects.get(id = image_id)
         team = Team.objects.filter(ground=image_id)
         post = Events.objects.filter(poster=image_id)
-        return render(request,"details.html", {"image":image, "team":team,"post":post})
+        blog = Blog.objects.filter(poster=image_id)
+        return render(request,"details.html", {"image":image, "team":team,"post":post,"blog":blog})
 
 def create_team(request,activities_id):
     current_user = request.user
@@ -102,6 +104,23 @@ def new_post(request,activities_id):
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
 
+def new_blog(request,activities_id):
+    current_user = request.user
+    news= Fitness_activities.objects.get(id=activities_id)
+    if request.method == 'POST':
+        form = NewBlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.posted_by = current_user
+            blog.poster = news
+            blog.save()
+        return redirect('detail', activities_id)
+
+    else:
+        form = NewBlogForm()
+    return render(request, 'new_blog.html', {"form": form, "activities_id": activities_id})
+
+
 def page_location(request,location):
     locations = Location.objects.all()
     categories = Category.objects.all()
@@ -133,9 +152,7 @@ def chat(request,team_id):
 
 
 def message(request):
-    message = request.POST.get('your_message')
-   
-
+    message = request.POST.get('your_message') 
     recipient = MessageRecipients(message=message)
     recipient.save()
     # send_welcome_email(name, email)
