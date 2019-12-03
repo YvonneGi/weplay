@@ -49,7 +49,7 @@ class Category(models.Model):
 class Fitness_activities(models.Model):
     photo = models.ImageField(upload_to = 'images/')
     description = models.CharField(max_length=3000)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     post_date=models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category)
 
