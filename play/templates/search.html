@@ -1,74 +1,58 @@
 {%extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static%}
-{% block content %}
-{{block.super}}
-
-
 {% block styles %}
+{{block.super}}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="w3.css">
 {% bootstrap_css %}
 {% endblock %}
+
+{% block content %}
+{{block.super}}
 <style>
-body{
-    background-color: #95A5A6 ;
-}
-h2{
-    color: white;
-    margin-left: 20%;
-}
+    body {
+        background-color: #95A5A6;
+    }
+
+    h2 {
+        color: white;
+        margin-left: 20%;
+    }
 </style>
-<body>
-    <div class="container"> <br> <br> <br> <br> <br> <br>
 
-        <div class="row">
-            {% if activitiess%}
-            <h2>Searched term: {{message}}</h2>
-            {% else %}
-            <h2> Found 0 activities for the search term. {{message}}</h2>
-            {% endif %}
+<div class="container-fluid"> <br> <br> <br> <br> <br> <br>
 
+    <div class="row">
+        {% if searched_sector%}
+        <h2>Searched term: {{message}}</h2>
+        {% else %}
+        <h2> {{message}}</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="row">
+        {% for sect in searched_sector %}
+        <div class="col-md-3">
+                <h5 id="imageTitle" style="text-align: center; color: #000066 ; font-family: 'Grenze', serif; font-size: 30px;">
+                        <strong>{{sect.category}}</strong></h5>
+
+                        <img style="margin-bottom: 30px; width:1000px; height:300px;" src="{{sect.photo.url}}"
+                        class="img-thumbnail photo img-responsive" alt="Image" data-toggle="modal">                        
+            <p class="text-center">Description:{{sect.description}}</p>
         </div>
-        {% if activitiess%}
-
-        {% for img in activitiess %}
-
-        <div class=" row">
-            <div class="w3-container w3-content">
-                <!-- The Grid -->
-                <div class="w3-row">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-11">
-                            <div class="w3-col m10">
-                                <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-
-                                    <span class="w3-right w3-opacity"></span>
-                                    <p>{{img.category}} </p>
-                                    <img src="{{img.photo.url}}" class="img-responsive" alt="Image" width='400'
-                                        length='450'>
-
-                                    <p class="text-center">Location:{{img.location}}</p>
-                                    <p class="text-center">Description:{{img.description}}</p>
-
-                                </div>
-                                <!-- End Middle Column -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            {%endfor%}
-
-            {%endif%}
-
-        </div>
-    </div> <br> <br> <br> <br> <br>
-
-</body>
 
 
+        {% endfor %}
+    </div>
 
+
+</div> <br> <br> <br> <br> <br>
+
+
+{%endblock%}
+
+{% block scripts %}
+{{block.super}}
 {%endblock%}
