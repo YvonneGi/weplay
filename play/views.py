@@ -13,14 +13,24 @@ def home(request):
     current_user = request.user
     images = Fitness_activities.objects.all()
     team = Team.objects.all()
+<<<<<<< HEAD
+    sectors = Sector.objects.all()
+=======
+>>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     post = Events.objects.all()
     blog = Blog.objects.all()
     locations = Location.objects.all()
+<<<<<<< HEAD
+=======
     return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,
     "post":post,"locations":locations,"blog":blog})
 
+>>>>>>> 61a7c0b634d38017300b9518f279f8d7c7647756
     chats=Chat.objects.all()
-    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
+    return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"post":post,"locations":locations, "chat":chat, "sectors":sectors})
+
+    # chats=Chat.objects.all()
+    # return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
 
 
 @login_required(login_url='/accounts/login/')
@@ -84,17 +94,24 @@ def create_team(request,activities_id):
         form = TeamForm()
         
     return render(request, 'team.html', {"form": form,"activities_id":activities_id})
+def search_sector(request):
+    sectors = Sector.objects.all() 
+    fitness = Fitness_activities.objects.all()
+    if 'sectors' in request.GET and request.GET["sectors"]:
+        
+        search_term = request.GET.get("sectors")
+        searched_sector = Fitness_activities.search_by_sector(search_term)
 
-def search_results(request):
-    locations = Location.objects.all()
-    if 'activities' in request.GET and request.GET["activities"]:
-        search_term = request.GET.get("activities")
-        searched_activity = Fitness_activities.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"activitiess": searched_activity,'locations':locations})
+        return render(request, 'search.html',{"message":message,"searched_sector": searched_sector,"fitness":fitness ,"sectors":sectors})
 
     else:
+
+        message = "You haven't searched for any Sector"
+        return render(request, 'search.html',{"message":message})
+    
+def new_post(request,activities_id):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message,'locations':locations})
 
@@ -131,12 +148,12 @@ def new_blog(request,activities_id):
     return render(request, 'new_blog.html', {"form": form, "activities_id": activities_id})
 
 
-def page_location(request,location):
-    locations = Location.objects.all()
+def page_location(request,sector):
+    sectors = Sector.objects.all()
     categories = Category.objects.all()
-    title = f"{location}"
-    location_results = Fitness_activities.filter_location(location)
-    return render(request,'index.html',{'all_images':location_results,'locations':locations,'categories':categories, 'title':title})
+    title = f"{sector}"
+    location_results = Fitness_activities.filter_sector(sector)
+    return render(request,'search.html',{'all_images':location_results,'sectors':sectors,'categories':categories, 'title':title})
 
 @login_required(login_url='/accounts/login/')
 def chat(request,team_id):
