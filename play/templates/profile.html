@@ -1,80 +1,78 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%}
 {% load bootstrap4 %}
-{% load static%}
-{{block.super}}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-{% block styles %}
-{% bootstrap_css %}
-
-{% endblock %}
 {% block content %}
-
+{{block.super}}
 <style>
-  body {
-    background-color: #333;
+
+  .image {
+    height: 50%;
+    width: 15%;
+    display: flex;
+    float: left;
+    /* padding: 5%; */
+    margin-right: 2%;
   }
 </style>
 
-<body>
-  <div class="container">
-    <br> <br> <br> <br> <br> <br> <br>
-    <div class="row">
+<div class="container-fluid"> <br> <br>
+  {%if myProfile%}
 
-      <div class="col-md-3">
-        {% if user.profile_pic %}
-        <img src="{{user.profile_pic.url}}" alt="" width="200" height="200"  style="border-radius: 50%;">
-        {% else %}
-        <img
-          src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
-          alt="" width="200" height="200" style="border-radius: 50%;">
-        {% endif %}
-      </div>
+  {%for prof in myProfile%}
+  <div class="row">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <br>
+      <img src="{{prof.profile_pic.url}}" class="img-thumbnail photo img-responsive" alt="Image" height="35px"
+        width="35px"> <br> <br> <br>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="bio"> <br> <br>
+      <h2>{{prof.username}}</h2>
+      <p>{{prof.fullname}}</p>
+      <p>Phone Number : {{prof.phone_number}}</p>
+      <a href="{%url 'edit_profile'%}" style="margin: 10px; text-decoration: none;">
+        <button type="button" class="btn btn-default btn-inverse"><strong> Edit Profile</strong> </button> </a>
+    </div>
+  </div>
+  {%endfor%}
 
-      <div class="col-md-3">
-        <p class="mt-1 font-weight-bold font-italic">{{user.username.username}}</p>
-
-
-        {% if user == current_user %}
-        <a href="{% url 'edit-profile' %}">
-          <button class="btn btn-dark" type="button" name="button"><img
-              src="https://img.icons8.com/color/48/000000/pencil.png" width="24">Edit Profile</button>
-        </a>
-
-        <p>{{user.fullname}}</p>
-        <p>{{user.bio | safe}}</p>
-        <a href="/logout/">
-          <button class="btn btn-danger" type="button" name="button"> <img
-              src="https://img.icons8.com/metro/48/000000/shutdown.png" width="24"> Logout</button>
-        </a>
-
-        {% endif %}
-      </div>
-      <div class="col-md-6">
-          <h3 class="" style="font-family: 'Tomorrow', sans-serif;font-size: 35px;text-align: center;">Your blog posts</h3>
-  
-  
-        
-        </div>
-
-
-
-
+  {%else%}
+  <div class="card">
+    <div class="card-header">
 
     </div>
-    <br>
+    <div class="card-body" styles="width:50px;">
 
-  </div> <br> <br> <br> <br>
-  {% block scripts %}
-    <!-- JavaScript Libraries -->
+      <h3 class="card-text">complete your profile</h3>
+      <a class="btn btn-sm btn-primary" href="{% url 'edit_profile' %}"> complete Profile</a>
+    </div>
+  </div>
+</div>
+{%endif%} <br> <br>
 
-    <script src="{% static 'js/script.js'%}"></script>
-    
+<div class="row">
+
+  <div class="col-md-12">
+    <!-- <div class="w3-container w3-content"> -->
+
+    <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Blog posts</h3><br> <br>
+    <div class="row ">
+      {% for blog in blogs %}
+      <!-- <div class="col-md-4 mb-5"> -->
+
+      <div class="blog">
+        <h5 class="font-weight-bold ">{{blog.title}}</h5>
+        <img src="{{blog.image.url}}" class="image">
+        <p class="" id="aboutme">{{blog.blog_description}} </p>
+        <p class="" id="aboutme">Posted by: {{blog.posted_by}} </p>
+      </div>
+      <!-- </div> -->
+      {%endfor%}
+    </div><br>
+
+   
+  </div>
+</div> <br> <br>
 
 
-    {% bootstrap_javascript %} {% endblock %}
-
-
-</body>
-
+</div>
 
 {% endblock %}

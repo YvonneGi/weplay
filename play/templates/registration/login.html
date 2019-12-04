@@ -1,67 +1,44 @@
 {%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
-<style>
-#top{
-  background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: 410px;
-}
-#form{
-  border-style: ridge;
-}
-h1{
-  text-align: center;
-}
-h3{
-  font-size: 20px;
-}
-body{
-  background-color: #95A5A6 ;
-}
-</style>
-<body>
-  
-
-<div class="container"> <br> <br> <br> <br> <br>
-<div id="form" style="background-color: #f3f3f5;">
-    <div class="row">
+<div class="container">
+        <br> <br> <br>
+  <div class="row"> 
     <!-- Empty div -->
-    <div class="col-md-4">
-      <div id="top"></div>
-    </div>
-    <div class="col-md-1"> </div>
-    <!-- empty div -->
-    <div class="col-md-4">
-        {% if form.errors %}
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+      {% if form.errors %}
         <p> Password or Username is incorrect </p>
-        {% endif %}
-        <div class="panel panel-default">
-            <h1>Weplay</h1> <br>
-          <div class="panel-heading">
-            <h3 class="text-center">Sign In</h3>
-          </div>
-          <div class="panel-body">
-  
-            <form action="/accounts/login/" method="post">
-              {% csrf_token %}
-              {% bootstrap_form form%}
-  
-              <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-sm" value="Login">
-              </div>
-              <input type="hidden" name="next" value="{{next}}">
-  
-            </form>
-            <p>Don't have an account?</p> <span><a href="/accounts/register/" class="btn btn-primary btn-sm">Sign
-                Up</a></span>
-          </div>
-  
+      {% endif %}
+      <div class="card">
+
+        <div class="card-header">
+          <h3 class="text-center">Sign In</h3>
         </div>
+        <div class="card-body">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            </div>
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+
+        </div>
+        <p style="margin-left: 15px"> Don't you have an account?  <a class="btn btn-primary btn-sm" style="margin: 5px" href="/accounts/register/"> Sign Up </a> </p>
+      </div>
+
     </div>
+    <!-- empty div -->
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
   </div>
 </div>
-</div>
+
+</div> <br>
 </body>
 {% endblock %}

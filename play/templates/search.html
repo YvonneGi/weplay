@@ -35,17 +35,18 @@
     <div class="row">
         {% for sect in searched_sector %}
         <div class="col-md-3">
-            <h5 id="imageTitle"style="text-align: center; color: #000066 ; font-family: 'Grenze', serif; font-size: 30px;">
-                <strong>{{sect.category}}</strong></h5>
-            <a href="{% url 'detail' sect.id %}" data-lightbox="gallery-mf">
-                <div class="work-img">
+                <h5 id="imageTitle" style="text-align: center; color: #000066 ; font-family: 'Grenze', serif; font-size: 30px;">
+                        <strong>{{sect.category}}</strong></h5>
+<!--  -->
+<a href="{% url 'detail' sect.id %}" data-lightbox="gallery-mf">
 
-                    <img style="margin-bottom: 30px; width:1000px; height:300px;" src="{{sect.photo.url}}"
-                        class="img-thumbnail photo img-responsive" alt="Image" data-toggle="modal">
-                    <p class="text-center">Description:{{sect.description}}</p>
-                </div>
+        
+    <img style="margin-bottom: 30px; width:1000px; height:300px;" src="{{sect.photo.url}}"
+    class="img-thumbnail photo img-responsive" alt="Image" data-toggle="modal">       
+</a>
 
-            </a>
+                                        
+            <p class="text-center">Description:{{sect.description}}</p>
         </div>
 
 
