@@ -207,7 +207,7 @@
 
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a href="{% url 'profile' user.id%}" style="text-decoration: none; color: white; ">{{user.username}}
+            <a href="{% url 'profile' user.id%}">{{user.username}}
               {% if user.profile.profile_pic%}
               <img src="{{user.profile.profile_pic.url}}" alt="profile"
                 style="border-radius: 50%;height: 35px;width:35px"> </a>
@@ -224,7 +224,7 @@
               
 
                 <li>
-                  <a href="/logout" style="text-decoration: none; color: white;">Logout</a>
+                  <a href="/logout" >Logout</a>
                 </li>
              
            
