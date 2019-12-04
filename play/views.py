@@ -6,7 +6,7 @@ from .forms import *
 from django.http import JsonResponse
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def home(request):
     title='weplay'
     profiles= Profile.objects.all()
@@ -27,28 +27,77 @@ def home(request):
     # return render(request,'index.html',{'title':title,"profiles":profiles,"current_user":current_user,"images":images,"team":team,"chat":chat})
 
 
-@login_required(login_url='/accounts/login/')
-def profile(request,id):
-    user_object = request.user
-    current_user = Profile.objects.get(username__id=request.user.id)
-    user = Profile.objects.get(username__id=id)
+# @login_required(login_url='/accounts/login/')
+# def profile(request,id):
+#     user_object = request.user
+#     current_user = Profile.objects.get(username__id=request.user.id)
+#     user = Profile.objects.get(username__id=id)
+   
+#     return render(request, "profile.html", {"current_user":current_user,"user":user,"user_object":user_object})
 
-    return render(request, "profile.html", {"current_user":current_user,"user":user,"user_object":user_object})
+@login_required(login_url='/accounts/login/')
+def profile(request, profile_id):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.username = current_user
+            profile.save()
+            return redirect('home')
+
+    else:
+        form = ProfileForm()
+    username=User.objects.all()    
+    myProfile = Profile.objects.filter(username = current_user)
+    blogs = Blog.objects.filter(bloger = current_user)
+    # blogs = Blog.objects.all()    
+    
+    return render(request, 'profile.html', {"form": form, "username": username,"myProfile": myProfile, "blogs":blogs}) 
+
+
+# @login_required(login_url='/accounts/login/')
+# def edit_profile(request):
+#     current_user=request.user
+#     user_edit = Profile.objects.get(username__id=current_user.id)
+#     if request.method =='POST':
+#         form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+#         if form.is_valid():
+#             form.save()
+
+#         return redirect("home")               
+#     else:
+#         form=ProfileForm(instance=request.user.profile)
+     
+#     return render(request,'edit_profile.html',locals())
+
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
     current_user=request.user
-    user_edit = Profile.objects.get(username__id=current_user.id)
-    if request.method =='POST':
-        form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
-        if form.is_valid():
-            form.save()
 
-        return redirect("home")               
-    else:
-        form=ProfileForm(instance=request.user.profile)
+    if request.method =='POST':
+        
+        if Profile.objects.filter(username_id=current_user).exists():
+            form = ProfileForm(request.POST,request.FILES,instance=Profile.objects.get(username_id = current_user))    
+        else:
+            form=ProfileForm(request.POST,request.FILES)   
+           
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.username = current_user
+            profile.save()
+            return redirect('profile', current_user.id)    
      
-    return render(request,'edit_profile.html',locals())
+    else:
+        if Profile.objects.filter(username_id = current_user).exists():
+            form=ProfileForm(instance =Profile.objects.get(username_id=current_user))
+        else:
+            form=ProfileForm()     
+            
+    return render(request,'edit_profile.html',{"form":form}) 
+
+
 def all_playgrounds(request,activities_id):
     images = Fitness_activities.get_images()
     playg = Fitness_activities.objects.get(id=activities_id)
@@ -69,6 +118,7 @@ def detail(request,image_id):
        
         return render(request,"details.html", {"image":image, "team":team,"post":post,"blog":blog})
 
+@login_required(login_url='/accounts/login/')
 def create_team(request,activities_id):
     current_user = request.user
     playg = Fitness_activities.objects.get(id=activities_id)
@@ -88,6 +138,7 @@ def create_team(request,activities_id):
         form = TeamForm()
         
     return render(request, 'team.html', {"form": form,"activities_id":activities_id})
+
 def search_sector(request):
     sectors = Sector.objects.all() 
     fitness = Fitness_activities.objects.all()
@@ -124,7 +175,7 @@ def new_post(request,activities_id):
 #     else:
 #         form = NewPostForm()
 #     return render(request, 'new_post.html', {"form": form, "activities_id": activities_id})
-
+@login_required(login_url='/accounts/login/')
 def new_blog(request,activities_id):
     current_user = request.user
     news= Fitness_activities.objects.get(id=activities_id)

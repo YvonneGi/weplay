@@ -1,55 +1,37 @@
-{% extends 'base.html' %}
-{% load bootstrap4 %}
-{% block content %}
-<style>
-  #top{
-  background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: 500px;
-}
-  body{
-  background-color: #95A5A6 ;
-}
-#form{
-  border-style: ridge;
-}
-h1{
-  text-align: center;
-}
-h3{
-  font-size: 20px;
-}
-</style>
+{% load bootstrap4 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Profile</title>
+  {{form.media}}
+
+  {% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endblock %}
+
+</head>
 
 <body>
-  
-    <div class="container"> <br> <br> <br> <br> <br> <br> <br>
-      <div id="form" style="background-color: #f3f3f5;">
-      <div class="row">
-        <div class="col-md-4"> 
-            <div id="top"></div>
-        </div>
-        <div class="col-md-1"> </div>
-        <div class="col-md-4"> 
 
-            <h1>Edit your profile</h1>
-            <form action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
-      
-              {% csrf_token%}
-              {% bootstrap_form form %}
-              <div class="form-group text-center">
-                <input type="submit" class="btn btn-success btn-lg" value="Save Changes">
-              </div>
-      
-      
-            </form>
-        </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="border-style: inset;"> <br>
+      <form action="{%url 'edit_profile'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
 
-      </div>
-      </div>
-    </div> <br> <br> <br>
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
+      </form> <br>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+  </div>
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
 </body>
 
-  {% endblock %}
+</html>

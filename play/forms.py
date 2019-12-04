@@ -3,7 +3,7 @@ from .models import *
 class ProfileForm(forms.ModelForm):
     class Meta:
          model= Profile
-         exclude = ['user','team']
+         exclude = ['username']
 class TeamForm (forms.ModelForm):
     class Meta:
          model = Team
