@@ -28,16 +28,16 @@
   {% block content %}
 
   <style>
-    /* body{
-      background-color: #95A5A6;
+    body{
+      background-color: #CCCCCC;
       
-    } */
+    }
     .mt-2 {
       border: 1px;
       border-radius: 5%;
       width: 40%;
       height: 50%;
-      background-color: #AED6F1;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#18d26e ;
       margin-left: 20%;
     }
 
@@ -56,14 +56,14 @@
     }
 
     .carousel-item {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),#61892F ;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#18d26e ;
             text-align: center;
             height: 250px;
         }
   </style>
   <div class="container"> <br> <br> <br><br><br>
 
-    <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;text-align: center;"> TESTIMONIALS </h3>
+    <h3 style="font-family: 'Bad Script', cursive;text-align: center"> TESTIMONIALS </h3>
 
     <!--  -->
     <div class="img-fluid">
@@ -76,24 +76,24 @@
         </ol>
         <div class="carousel-inner" id="car">
           <div class="carousel-item active">
-            <h2 style="color: white;">Slide 1</h2>
+            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 1</h2>
             <div class="carousel-caption">
-              <h3>This is the First Label</h3>
-              <p>The Content of the First Slide goes in here</p>
+              <h3 style="font-family: 'Bad Script', cursive">This is the First Label</h3>
+              <p style="font-family: 'Bad Script', cursive">The Content of the First Slide goes in here</p>
             </div>
           </div>
           <div class="carousel-item">
-            <h2 style="color: white;">Slide 2</h2>
+            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 2</h2>
             <div class="carousel-caption">
-              <h3>This is the Second Label</h3>
-              <p>The Content of the second Slide goes in here</p>
+              <h3 style="font-family: 'Bad Script', cursive">This is the Second Label</h3>
+              <p style="font-family: 'Bad Script', cursive">The Content of the second Slide goes in here</p>
             </div>
           </div>
           <div class="carousel-item">
-            <h2 style="color: white;">Slide 3</h2>
+            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 3</h2>
             <div class="carousel-caption">
-              <h3>This is the Third Label</h3>
-              <p>The Content of the Third Slide goes in here</p>
+              <h3 style="font-family: 'Bad Script', cursive">This is the Third Label</h3>
+              <p style="font-family: 'Bad Script', cursive">The Content of the Third Slide goes in here</p>
             </div>
           </div>
         </div>
@@ -104,9 +104,9 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
-    </div>
+    </div><br><br>
     <!--------->
-    <h4 style="margin-left: 20%;">You want it?Get it!</h4>
+    <h4 style="margin-left: 20%;" style="font-family: 'Bad Script', cursive">You want it?Get it!</h4>
     <div class="row justify-content-center h-100">
       <div class="card-body">
         <div class="card-footer-section">
@@ -122,11 +122,11 @@
                 {% else %}
                 <span><img
                     src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
-                    alt="" width="20" height="20"><strong><em>{{chat.username.username}}</em></strong> </span>
+                    alt="" width="20" height="20" style="font-family: 'Bad Script', cursive"><strong><em>{{chat.username.username}}</em></strong> </span>
                 {% endif %}
               </div> <br>
               <span style="background-color:#F3F3F5;margin-left: 10%;padding: 10px;border-radius: 25px;position: relative;
-              margin-top: auto;margin-bottom: auto;">{{chat.message}}</span>
+              margin-top: auto;margin-bottom: auto;font-family: 'Bad Script', cursive">{{chat.message}}</span>
 
 
             </p>
@@ -136,7 +136,7 @@
               {%csrf_token%}
               {% bootstrap_form form layout='inline' %}
               <input type="submit" name="idteam" value="Send" placeholder="Type your message..."
-                class="btn btn-success btn-lg">
+                class="btn btn-lg">
             </form>
 
           </div>

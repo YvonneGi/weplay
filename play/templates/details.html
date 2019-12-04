@@ -50,8 +50,8 @@
         <!-- <span class="w3-right w3-opacity"> -->
 
         <img src="{{image.photo.url}}" class="" width="100%">
-        <h1 class="text-center" style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">{{image.category}}</h1>
-        <p class="text-center">Location:{{image.location}}</p>
+        <h1 class="text-center" style="font-family: 'Bad Script', cursive">{{image.category}}</h1>
+        <p class="text-center" style="font-family: 'Bad Script', cursive">Location:{{image.location}}</p>
         <p class="text-center">{{image.description}}</p>
         <!-- </span> -->
         <!-- </div> -->
@@ -144,23 +144,23 @@
       <div class="col-md-9">
         <!-- <div class="w3-container w3-content"> -->
 
-        <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Blog posts</h3><br> <br>
+        <h3 style="font-family: 'Bad Script', cursive">Blog posts</h3><br> <br>
         <div class="row ">
           {% for blogs in blog %}
           <!-- <div class="col-md-4 mb-5"> -->
 
           <div class="blog">
-            <h5 class="font-weight-bold ">{{blogs.title}}</h5>
+            <h5 class="font-weight-bold " style="font-family: 'Bad Script', cursive">{{blogs.title}}</h5>
             <img src="{{blogs.image.url}}" class="image">
-            <p class="" id="aboutme">{{blogs.blog_description}} </p>
-            <p class="" id="aboutme">Posted by: {{blogs.posted_by}} </p>
+            <p class="" id="aboutme" style="font-family: 'Bad Script', cursive">{{blogs.blog_description}} </p>
+            <p class="" id="aboutme" style="font-family: 'Bad Script', cursive">Posted by: {{blogs.posted_by}} </p>
           </div>
           <!-- </div> -->
           {%endfor%}
         </div><br>
 
         <div class="row">
-          <a href="{%url 'new_blog' image.id %}" class="btn btn-sm"><button>create Blog</button></a>
+          <a href="{%url 'new_blog' image.id %}" class="btn btn-sm" style="font-family: 'Bad Script', cursive"><button>create Blog</button></a>
         </div><br><br>
       </div>
 
@@ -175,7 +175,7 @@
       <div class="col-md-3">
         <div class="card">
           <div class="row">
-            <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Teams
+            <h3 style="font-family: 'Bad Script', cursive">Teams
             </h3>
           </div> <br><br>
           <div class="w3-card-4">
@@ -186,7 +186,7 @@
               <a href="{%url 'chat' teams.id %}">
                 <ul style="text-decoration: none;">
                   <li>
-                    <p>{{teams.t_name}}</p>
+                    <p style="font-family: 'Bad Script', cursive">{{teams.t_name}}</p>
                   </li>
                 </ul>
               </a>
@@ -197,16 +197,16 @@
             {%endfor%}
           </div>
           <div class="row">
-            <a href="{%url 'create_team' image.id %}" class="btn btn-sm " style="margin-left: 20%"><button >create team</button></a>
+            <a href="{%url 'create_team' image.id %}" class="btn btn-sm " style="font-family: 'Bad Script', cursive;margin-left: 20%"><button >create team</button></a>
           </div><br><br>
           <!-- <div class="col-md-4"> -->
 
-          <h3 style="font-family: 'Tomorrow', sans-serif;font-size: 35px;">Events
+          <h3 style="font-family: 'Bad Script', cursive">Events
           </h3><br>
           <div class="w3-card-4">
             {% for event in post %}
             <div class=""> 
-                <h5 class="font-weight-bold" style="margin-left: 10%">* {{event.title}}</h5>
+                <h5 class="font-weight-bold" style="font-family: 'Bad Script', cursive;margin-left: 10%">* {{event.title}}</h5>
                 <!-- <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p> -->
                 <!-- <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p> -->
               

@@ -201,13 +201,13 @@
 
         <ul class="nav-menu">
 
-          <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="#about">About Us</a></li>
+          <li class="menu-active"><a href="{% url 'home' %}" style="font-family: 'Bad Script', cursive">Home</a></li>
+          <li><a href="#about" style="font-family: 'Bad Script', cursive">About Us</a></li>
 
 
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a href="{% url 'profile' user.id%}">{{user.username}}
+            <a href="{% url 'profile' user.id%}" style="font-family: 'Bad Script', cursive">{{user.username}}
               {% if user.profile.profile_pic%}
               <img src="{{user.profile.profile_pic.url}}" alt="profile"
                 style="border-radius: 50%;height: 35px;width:35px"> </a>
@@ -219,20 +219,13 @@
 
           </li>
           
-           
-
-              
-
                 <li>
-                  <a href="/logout" >Logout</a>
+                  <a href="/logout" style="font-family: 'Bad Script', cursive">Logout</a>
                 </li>
              
-           
-         
-
           {% else %}
           <li>
-            <a class="btn btn-primary btn-sm" href="/accounts/login/"> Sign In </a>
+            <a class="btn  btn-sm" href="/accounts/login/" style="font-family: 'Bad Script', cursive"> Sign In </a>
           </li>
 
           {% endif %}

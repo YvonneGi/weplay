@@ -3,7 +3,7 @@ from .models import *
 class ProfileForm(forms.ModelForm):
     class Meta:
          model= Profile
-         exclude = ['username']
+         exclude = ['username','team']
 class TeamForm (forms.ModelForm):
     class Meta:
          model = Team
@@ -17,7 +17,7 @@ class TeamForm (forms.ModelForm):
 class NewBlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        exclude = ['posted_by','poster']
+        exclude = ['posted_by','poster','bloger','profile']
 
 class ChatForm (forms.ModelForm):
     class Meta:
