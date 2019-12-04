@@ -204,55 +204,44 @@
           <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
           <li><a href="#about">About Us</a></li>
 
+
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'profile' user.id%}" style="text-decoration: none; color: white; ">{{user.username}}
+              {% if user.profile.profile_pic%}
+              <img src="{{user.profile.profile_pic.url}}" alt="profile"
+                style="border-radius: 50%;height: 35px;width:35px"> </a>
+            {% else %}
+            <img src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png"
+              alt="profile" style="border-radius: 50%;height: 35px;width:35px">
+            {% endif %}
+
+
+          </li>
+          
+           
+
+              
+
+                <li>
+                  <a href="/logout" style="text-decoration: none; color: white;">Logout</a>
+                </li>
+             
+           
+         
+
+          {% else %}
+          <li>
+            <a class="btn btn-primary btn-sm" href="/accounts/login/"> Sign In </a>
+          </li>
+
+          {% endif %}
+
         </ul>
 
 
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-          aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-
-          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a href="{% url 'profile' user.id%}" style="text-decoration: none; color: white; ">{{user.username}}
-                  {% if user.profile.profile_pic%}
-                  <img src="{{user.profile.profile_pic.url}}" alt="profile"
-                    style="border-radius: 50%;height: 35px;width:35px"> </a>
-                {% else %}
-                <img src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png"
-                  alt="profile" style="border-radius: 50%;height: 35px;width:35px">
-                {% endif %}
-
-
-              </li>
-              <ul class="navbar-nav ml-auto">
-                <li class="">
-
-                  <ul class="">
-
-                    <li>
-                      <a href="/logout" style="text-decoration: none; color: white;">Logout</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-
-              {% else %}
-              <li>
-                <a class="btn btn-primary btn-sm" href="/accounts/login/"> Sign In </a>
-              </li>
-
-              {% endif %}
-            </ul>
-          </div>
-
-        </div>
+       
+      </nav>
   </header><!-- #header -->
 
 </body>
