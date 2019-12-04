@@ -12,224 +12,205 @@
 
 <body>
   <style>
-    .navbar-b {
-      transition: all .5s ease-in-out;
-      background-color: transparent;
-      padding-top: 1.563rem;
-      padding-bottom: 1.563rem;
-    }
-    .navbar-b.navbar-reduce {
-      box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);
-    }
-    .navbar-b.navbar-trans .nav-item,
-    .navbar-b.navbar-reduce .nav-item {
-      position: relative;
-      padding-right: 10px;
-      padding-left: 0;
-    }
-    .navbar-b.navbar-trans .nav-link,
-    .navbar-b.navbar-reduce .nav-link {
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .navbar-b.navbar-trans .nav-link:before,
-    .navbar-b.navbar-reduce .nav-link:before {
-      content: '';
-      position: absolute;
-      margin-left: 0px;
-      width: 0%;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      transition: all 500ms ease;
-    }
-    .navbar-b.navbar-trans .nav-link:hover,
-    .navbar-b.navbar-reduce .nav-link:hover {
-      color: #1B1B1B;
-    }
-    .navbar-b.navbar-trans .nav-link:hover:before,
-    .navbar-b.navbar-reduce .nav-link:hover:before {
-      width: 35px;
-    }
-    .navbar-b.navbar-trans .show>.nav-link:before,
-    .navbar-b.navbar-trans .active>.nav-link:before,
-    .navbar-b.navbar-trans .nav-link.show:before,
-    .navbar-b.navbar-trans .nav-link.active:before,
-    .navbar-b.navbar-reduce .show>.nav-link:before,
-    .navbar-b.navbar-reduce .active>.nav-link:before,
-    .navbar-b.navbar-reduce .nav-link.show:before,
-    .navbar-b.navbar-reduce .nav-link.active:before {
-      width: 35px;
-    }
-    .navbar-b.navbar-trans .nav-link:before {
-      background-color: #fff;
-    }
-    .navbar-b.navbar-trans .nav-link:hover {
-      color: #fff;
-    }
-    .navbar-b.navbar-trans .show>.nav-link,
-    .navbar-b.navbar-trans .active>.nav-link,
-    .navbar-b.navbar-trans .nav-link.show,
-    .navbar-b.navbar-trans .nav-link.active {
-      color: #fff;
-    }
-    .navbar-b.navbar-reduce {
-      transition: all .5s ease-in-out;
-      background-color: #fff;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-    .navbar-b.navbar-reduce .nav-link {
-      color: #0078ff;
-    }
-    .navbar-b.navbar-reduce .nav-link:before {
-      background-color: #0078ff;
-    }
-    .navbar-b.navbar-reduce .nav-link:hover {
-      color: #0078ff;
-    }
-    .navbar-b.navbar-reduce .show>.nav-link,
-    .navbar-b.navbar-reduce .active>.nav-link,
-    .navbar-b.navbar-reduce .nav-link.show,
-    .navbar-b.navbar-reduce .nav-link.active {
-      color: #0078ff;
-    }
-    .navbar-b.navbar-reduce .navbar-brand {
-      color: #0078ff;
-    }
-    .navbar-b.navbar-reduce .navbar-toggler span {
-      background-color: #1B1B1B;
-    }
-    .navbar-b .navbar-brand {
-      color: #fff;
-      font-size: 1.6rem;
-      font-weight: 600;
-    }
-    .navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
-    .navbar-b .dropdown.show .dropdown-menu,
-    .navbar-b .dropdown-btn.show .dropdown-menu {
-      -webkit-transform: translate3d(0px, 0px, 0px);
-      transform: translate3d(0px, 0px, 0px);
-      visibility: visible !important;
-    }
-    .navbar-b .dropdown-menu {
-      margin: 1.12rem 0 0;
-      border-radius: 0;
-    }
-    .navbar-b .dropdown-menu .dropdown-item {
-      padding: .7rem 1.7rem;
-      transition: all 500ms ease;
-    }
-    .navbar-b .dropdown-menu .dropdown-item:hover {
-      background-color: #0078ff;
-      color: #fff;
-      transition: all 500ms ease;
-    }
-    .navbar-b .dropdown-menu .dropdown-item.active {
-      background-color: #0078ff;
-    }
-    /*--/ Hamburger Navbar /--*/
-    .navbar-toggler {
-      position: relative;
-    }
-    .navbar-toggler:focus,
-    .navbar-toggler:active {
-      outline: 0;
-    }
-    .navbar-toggler span {
-      display: block;
-      background-color: #fff;
-      height: 3px;
-      width: 25px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-      left: 0;
-      opacity: 1;
-    }
-    .navbar-toggler span:nth-child(1),
-    .navbar-toggler span:nth-child(3) {
-      transition: -webkit-transform .35s ease-in-out;
-      transition: transform .35s ease-in-out;
-      transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;
-    }
-    .navbar-toggler:not(.collapsed) span:nth-child(1) {
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      -webkit-transform: rotate(135deg);
-      transform: rotate(135deg);
-      opacity: 0.9;
-    }
-    .navbar-toggler:not(.collapsed) span:nth-child(2) {
-      height: 12px;
-      visibility: hidden;
-      background-color: transparent;
-    }
-    .navbar-toggler:not(.collapsed) span:nth-child(3) {
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      -webkit-transform: rotate(-135deg);
-      transform: rotate(-135deg);
-      opacity: 0.9;
-    }
+    /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header {
+  padding: 30px 0;
+  height: 92px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+#header.header-scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px 0;
+  height: 72px;
+  transition: all 0.5s;
+}
+
+#header #logo {
+  float: left;
+  
+}
+
+#header #logo h1 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+#header #logo h1 a,
+#header #logo h1 a:hover {
+  color: #fff;
+  padding-left: 10px;
+  border-left: 4px solid #18d26e;
+}
+
+#header #logo img {
+  padding: 0;
+  margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+/* Nav Menu Essentials */
+
+.nav-menu,
+.nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* position: fixed; */
+}
+
+.nav-menu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+}
+
+.nav-menu li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu > li {
+  float: left;
+}
+
+.nav-menu li:hover > ul,
+.nav-menu li.sfHover > ul {
+  display: block;
+}
+
+.nav-menu ul ul {
+  top: 0;
+  left: 100%;
+}
+
+.nav-menu ul li {
+  min-width: 180px;
+}
+
+/* Nav Menu Arrows */
+
+.sf-arrows .sf-with-ul {
+  padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+  content: "\f107";
+  position: absolute;
+  right: 15px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: "\f105";
+}
+
+/* Nav Meu Container */
+
+#nav-menu-container {
+  float: right;
+  margin: 0;
+}
+
+/* Nav Meu Styling */
+
+.nav-menu a {
+  padding: 0 8px 10px 8px;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.nav-menu li:hover > a,
+.nav-menu > .menu-active > a {
+  color: #18d26e;
+}
+
+.nav-menu > li {
+  margin-left: 10px;
+}
+
+.nav-menu ul {
+  margin: 4px 0 0 0;
+  padding: 10px;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: #fff;
+}
+
+.nav-menu ul li {
+  transition: 0.3s;
+}
+
+.nav-menu ul li a {
+  padding: 10px;
+  color: #333;
+  transition: 0.3s;
+  display: block;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.nav-menu ul li:hover > a {
+  color: #18d26e;
+}
+
+.nav-menu ul ul {
+  margin: 0;
+}
+
     
   </style>
 
 
 
-  <!--/ Nav Star /-->
-  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container">
-    
-    <ul>
-
-       <li class="nav-item dropdown" style="list-style:none"  >
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Locations
-                </a>
-                <div class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-                  {% for locat in locations %}
-                  <a class="dropdown-item" href="{% url 'page_location' locat.location_name %}">{{locat.location_name}}</a>
-                  <div class="dropdown-divider"></div>
-            
-            
-                  {% endfor %}
-                </div>
-              </li>
-   
-    </ul>
+   <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+      <div class="container-fluid">
   
-
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-        <ul class="navbar-nav">
-           
-
-          <li class="nav-item">
-            <a class="nav-link js-scroll active" href="{% url 'home'%}"> <strong>Home </strong> </a>
-          </li>
+        <div id="logo" class="pull-left">
+          <h1><img style="height:60px; width:60px;" src="static/image/logo2.png" alt="logo"><a >Fitness</a></h1>
           
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="{% url 'profile' request.user.id %}">Profile</a>
-
-          </li>
-         
-        </ul>
+        </div>
+  
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+            
+            
+           
+          </ul>
+        </nav><!-- #nav-menu-container -->
       </div>
-
-    </div>
-  </nav>
-  <!--/ Nav End /-->
+    </header><!-- #header -->
 
 </body>
 
