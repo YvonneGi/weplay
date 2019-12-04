@@ -5,8 +5,12 @@ from . import views
 
 urlpatterns=[
     url('^$',views.home,name = 'home'),
-    url(r'^accounts/profile/(\d+)', views.profile, name = 'profile'),
-    url(r'^accounts/edit-profile/', views.edit_profile, name = 'edit-profile'),
+    # url(r'^accounts/profile/(\d+)', views.profile, name = 'profile'),
+    # url(r'^accounts/edit-profile/', views.edit_profile, name = 'edit-profile'),
+
+    url(r'^new/profile/(\d+)', views.profile, name='profile'),
+    url(r'^new/edit_profile$', views.edit_profile, name='edit_profile'),
+
     url(r'^all/$', views.all_playgrounds, name='allplaygrounds'),
     url(r'^detail/(\d+)', views.detail, name='detail'),
     url(r'^new/team/(\d+)', views.create_team, name='create_team'),

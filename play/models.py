@@ -107,26 +107,16 @@ class Profile(models.Model):
     def __str__(self):
         return self.username.username
 
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-       if created:
-           Profile.objects.create(username=instance)
-
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(sender, instance, **kwargs):
-    #    instance.profile.save()
-
+    def save_profile(self):
+        self.save()    
+        
     def update_profile(self):
-
-        ''' Method to update a profile in the database'''
-
         self.update()
 
     def delete_profile(self):
+        self.delete() 
 
-        ''' Method to delete a profile from the database'''
 
-        self.delete()
 
 
 class Chat(models.Model):
@@ -166,6 +156,8 @@ class Blog (models.Model):
     blog_description = models.TextField(max_length=300)
     posted_by = models.CharField(max_length=30)
     poster = models.ForeignKey(Fitness_activities)
+    bloger = models.ForeignKey(User,on_delete=models.CASCADE , null=True)
+    profile = models.ForeignKey(Profile,null = True) 
 
     @classmethod
     def get_blog(cls, post_blog):
