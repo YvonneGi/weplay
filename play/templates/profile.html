@@ -1,9 +1,44 @@
 {%extends 'base.html'%}
-{% load bootstrap4 %}
 {% block content %}
-{{block.super}}
+{% load bootstrap4 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Profile</title>
+  {{form.media}}
+
+  {% block styles %} {% bootstrap_css %}
+<!-- Favicons -->
+
+
+<!-- Bootstrap CSS File -->
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  {% endblock %}
+  
+</head>
 <style>
-  .image {
+      /* body{
+        background-color: #CCCCCC;
+      } */
+      a{
+        text-decoration: none;
+      }
+      .image {
     height: 50%;
     width: 15%;
     display: flex;
@@ -12,52 +47,55 @@
     margin-right: 2%;
   }
 </style>
-
-<div class="container-fluid"> <br> <br>
+<body>
+<div class="container-fluide"><br> <br> <br> <br>
+   
   {%if myProfile%}
 
   {%for prof in myProfile%}
   <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <br>
-      <img src="{{prof.profile_pic.url}}" class="img-thumbnail photo img-responsive" alt="Image" height="200px"
-        width="200px"> <br> <br> <br>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"> <br>
+      <img src="{{prof.profile_pic.url}}" class="img-thumbnail photo img-responsive" alt="Image" height="300px"
+        width="300px"> <br> <br>
     </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="bio"> <br> <br>
+    <div class="col-md-3" id="bio"> <br> <br>
       <h2 style="font-family: 'Bad Script', cursive">{{prof.username}}</h2>
-      <p style="font-family: 'Bad Script', cursive">{{prof.fullname}}</p>
-      <p style="font-family: 'Bad Script', cursive">Phone Number : {{prof.phone_number}}</p>
-      <a href="{%url 'edit_profile'%}" style="margin: 10px; text-decoration: none;">
-        <button type="button" class="btn btn-default btn-inverse"><strong> Edit Profile</strong> </button> </a>
+      <p style="font-family: 'Bad Script', cursive">Full Name : {{prof.fullname}}</p>
+      <p style="font-family: 'Bad Script', cursive"> Phone Number : {{prof.phone_number}}</p>
+
+      <a class="btn btn-lg" href="{% url 'edit_profile' %}" style="font-family: 'Bad Script', cursive"> Edit Profile</a>
+
     </div>
   </div>
   {%endfor%}
 
-  {%else%}
-  <div class="card">
+  {%else%} <br> <br> <br>
+  <div class="card" style="text-align: center;">
     <div class="card-header">
 
     </div>
-    <div class="card-body" styles="width:50px;">
-
-      <h3 class="card-text" style="font-family: 'Bad Script', cursive">complete your profile</h3>
-      <a class="btn btn-sm btn-primary" href="{% url 'edit_profile' %}" style="font-family: 'Bad Script', cursive"> complete Profile</a>
+    <div class="card-body" >
+      <a class="btn btn-lg" href="{% url 'edit_profile' %}" style="font-family: 'Bad Script', cursive"> complete Profile</a>
     </div>
   </div>
-</div>
+
 {%endif%} <br> <br>
 
 <div class="row">
 
   <div class="col-md-12">
+
     <!-- <div class="w3-container w3-content"> -->
 
     <h3 style="font-family: 'Bad Script', cursive;">Blog posts</h3><br> <br>
+  </div>
+</div>
     <div class="row ">
       {% for blog in blogs %}
       <!-- <div class="col-md-4 mb-5"> -->
 
-      <div class="blog">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
         <h5 class="font-weight-bold " style="font-family: 'Bad Script', cursive;">{{blog.title}}</h5>
         <img src="{{blog.image.url}}" class="image">
         <p class="" id="aboutme" style="font-family: 'Bad Script', cursive;">{{blog.blog_description}} </p>
@@ -69,9 +107,27 @@
 
    
   </div>
-</div> <br> <br>
 
 
-</div>
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- JavaScript Libraries -->
 
+<script src="{% static 'js/script.js'%}"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/popper/popper.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/counterup/jquery.waypoints.min.js"></script>
+<script src="lib/counterup/jquery.counterup.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/typed/typed.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+</body>
 {% endblock %}
+</html>

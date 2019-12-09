@@ -28,16 +28,16 @@
   {% block content %}
 
   <style>
-    body{
+    /* body{
       background-color: #CCCCCC;
       
-    }
+    } */
     .mt-2 {
       border: 1px;
       border-radius: 5%;
       width: 40%;
       height: 50%;
-      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#18d26e ;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#13a456 ;
       margin-left: 20%;
     }
 
@@ -56,14 +56,14 @@
     }
 
     .carousel-item {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#18d26e ;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),#13a456 ;
             text-align: center;
             height: 250px;
         }
   </style>
-  <div class="container"> <br> <br> <br><br><br>
+  <div class="container-fluide"> <br> <br> <br><br><br>
 
-    <h3 style="font-family: 'Bad Script', cursive;text-align: center"> TESTIMONIALS </h3>
+    <h3 style="text-align: center;  font-weight: bold; color: #fff; font-family: 'FontAwesome'; font-size: 30px;"> TESTIMONIALS </h3> <br>
 
     <!--  -->
     <div class="img-fluid">
@@ -76,24 +76,24 @@
         </ol>
         <div class="carousel-inner" id="car">
           <div class="carousel-item active">
-            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 1</h2>
+            <h2 style="font-family: 'FontAwesome';font-weight: bold; color: #fff;">Clemence</h2>
             <div class="carousel-caption">
-              <h3 style="font-family: 'Bad Script', cursive">This is the First Label</h3>
-              <p style="font-family: 'Bad Script', cursive">The Content of the First Slide goes in here</p>
+              <h3 style="font-family: 'Bad Script', cursive"></h3>
+              <p style="font-family: 'Bad Script', cursive;font-size: 25px">I always want to do practice in the weekend but i dint know where i can go in my community but by using this app it helps me to know where i can go.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 2</h2>
+            <h2 style="font-family: 'FontAwesome';font-weight: bold; color: #fff;">Fifi</h2>
             <div class="carousel-caption">
-              <h3 style="font-family: 'Bad Script', cursive">This is the Second Label</h3>
-              <p style="font-family: 'Bad Script', cursive">The Content of the second Slide goes in here</p>
+              <!-- <h3 style="font-family: 'Bad Script', cursive; ;"></h3> -->
+              <p style="font-family: 'Bad Script', cursive; font-size: 25px;">this App helps me to know people in my neighborhood so that we can work together</p>
             </div>
           </div>
           <div class="carousel-item">
-            <h2 style="color: white;" style="font-family: 'Bad Script', cursive">Slide 3</h2>
+            <h2 style="font-family: 'FontAwesome';font-weight: bold; color: #fff;">Juliette</h2>
             <div class="carousel-caption">
-              <h3 style="font-family: 'Bad Script', cursive">This is the Third Label</h3>
-              <p style="font-family: 'Bad Script', cursive">The Content of the Third Slide goes in here</p>
+              <h3 style="font-family: 'Bad Script', cursive"></h3>
+              <p style="font-family: 'Bad Script', cursive;font-size: 25px">I always wonder how i can find people who will work with me the sport but this App helps me to find them</p>
             </div>
           </div>
         </div>
@@ -104,13 +104,13 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
-    </div><br><br>
+    </div><br>
     <!--------->
-    <h4 style="margin-left: 20%;" style="font-family: 'Bad Script', cursive">You want it?Get it!</h4>
+    <h4 style="font-family: 'Bad Script', cursive; color: #13a456; margin-left: 500px; font-size: 50px;">Talk to Us</h4>
     <div class="row justify-content-center h-100">
       <div class="card-body">
         <div class="card-footer-section">
-          </br>
+          
           <div id="card{{team.id}}" class="mt-2">
             {%for chat in chats %}
 
