@@ -11,50 +11,147 @@
 {% block content %}
 {{block.super}}
 <style>
-    body {
-        background-color: #95A5A6;
+<<<<<<< HEAD
+  
+=======
+    /* body {
+        background-color: #f3f3f5;
+    } */
+
+    #hed2 {
+        font-weight: bold;
+        color: #13a456;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        margin-left: 600px;
+>>>>>>> 6f857230cbc7c7d3938971a3b641a2632db67627
+
     }
 
-    h2 {
-        color: white;
-        margin-left: 20%;
-    }
+  .card{
+    position: relative;
+    width: 360px;
+    height: 350px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+  }
+  .card:before,
+  .card:after
+  {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: #fff;
+    transition: 0.5s;
+    z-index:-1;
+  }
+  .card:hover:before{
+  transform: rotate(20deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  }
+  .card:hover:after{
+  transform: rotate(10deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  }
+  .card .imgBx{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  transition: 0.5s;
+  z-index: 1;
+  }
+  
+  .card:hover .imgBx
+  {
+    bottom: 80px;
+  }
+
+  .card .imgBx img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .card .details{
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 60px;
+      text-align: center;
+  }
+
+  .card .details h2{
+   margin: 0;
+   padding: 0;
+   font-weight: 600;
+   font-size: 20px;
+   color: #777;
+   text-transform: uppercase;
+  } 
+
+  .card .details h2 span{
+  font-weight: 500;
+  font-size: 16px;
+  color: #111;
+  display: block;
+  margin-top: 5px;
+   } 
 </style>
 
-<div class="container-fluid"> <br> <br> <br> <br> <br> <br>
-
+<div class="container-fluid"> <br> <br>
     <div class="row">
         {% if searched_sector%}
-        <h2>Searched term: {{message}}</h2>
+        <h2 id="hed2">{{message}} Sector</h2>
         {% else %}
-        <h2> {{message}}</h2>
+        <h2 id="hed2"> Sector : {{message}}</h2>
         {% endif %}
 
-    </div>
+    </div><br> <br>
 
     <div class="row">
         {% for sect in searched_sector %}
         <div class="col-md-3">
-                <h5 id="imageTitle" style="text-align: center; color: #000066 ; font-family: 'Grenze', serif; font-size: 30px;">
+                <h5 id="imageTitle" style="text-align: center;  font-weight: bold; color: #13a456; font-family: 'FontAwesome'; font-size: 30px;">
                         <strong>{{sect.category}}</strong></h5>
-<!--  -->
-<a href="{% url 'detail' sect.id %}" data-lightbox="gallery-mf">
 
-        
-    <img style="margin-bottom: 30px; width:1000px; height:300px;" src="{{sect.photo.url}}"
-    class="img-thumbnail photo img-responsive" alt="Image" data-toggle="modal">       
-</a>
+            <div class="box">
+                <div class="card">
+                    <div class="imgBx">
+                        <a href="{% url 'detail' sect.id %}" data-lightbox="gallery-mf"> <img
+                                style="width:1000px; height:300px;" src="{{sect.photo.url}}" class="img-fluid"
+                                alt="Image">
+                        </a>
+                    </div>
+                    <div class="details">
+                        <h2> <br><span>{{sect.description}}</span></h2>
+                    </div>
 
-                                        
-            <p class="text-center">Description:{{sect.description}}</p>
+
+                </div>
+
+            </div> <br>
         </div>
 
 
-        {% endfor %}
+        {% endfor %} 
     </div>
 
 
-</div> <br> <br> <br> <br> <br>
+
+</div>
 
 
 {%endblock%}

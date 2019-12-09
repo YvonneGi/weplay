@@ -17,7 +17,7 @@ class TeamForm (forms.ModelForm):
 class NewBlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        exclude = ['posted_by','poster','profile']
+        exclude = ['posted_by','poster','bloger','profile']
 
 class ChatForm (forms.ModelForm):
     class Meta:
