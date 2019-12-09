@@ -6,66 +6,75 @@
   background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  height: 750px;
-  width: 500px;
+  height: 460px;
+ 
 }
 #form{
   border-style: ridge;
 }
-h1{
+#hh1{
   text-align: center;
+  color: #13a456;
+  font-family: 'FontAwesome';
+  font-weight: bold;
+  font-size: 40px; 
+  /* text-shadow: -1px 0 #18d26e, 0 1px #18d26e, 1px 0 #18d26e, 0 -1px #18d26e; */
 }
-h3{
-  font-size: 15px;
+#hh3{
+  font-size: 20px;
+  color: #111;
+  font-family: 'FontAwesome';
 }
-body{
-  background-color: #95A5A6 ;
-}
+/* body{
+  background-color: #CCCCCC;
+} */
 </style>
-<body >
-  
-
-<div class="container"> <br> <br> <br>
-  <div id="form" style="background-color: #f3f3f5;">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4">
+<body>
+  <div class="container-fluide"> <br> <br> <br> <br>
+    <div id="form">
+    <div class="row">
+      <!-- Empty div -->
+      <div class="col-md-5">
         <div id="top"></div>
     </div>
-    <div class="col-md-3"></div>
-    <!-- empty div -->
-    <div class="col-md-4">
-
+    <div class="col-md-1"></div>
+  
+    <div class="col-md-3">
+  
         {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
-          <h1>Weplay</h1> <br>
-        <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
-        </div>
-        <div class="panel-body">
+        <p>Password or Username is incorrect</p>
+        {% endif %}
+  
 
-          <form  action="/accounts/register/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
+          <h1 id="hh1">Weplay</h1> <br>
+          <div class="panel-heading">
+            <h3 class="text-center" id="hh3">Sign Up</h3>
+          </div>
+          <div class="panel-body">
+              <form action="/accounts/register/" method="post">
+  
+                {% csrf_token%}
+                {% bootstrap_form form layout='inline' %}
+  
+                <div class="form-group">
+                  <input type="submit" class="btn" value="Sign Up">
+              
+  
+                </div>
+                <input type="hidden" name="next" value="/">
+  
+              </form>
 
-            <input type="hidden" name="next" value="{{next}}">
-
-          </form>
-          <p> Arleady have an Account ?<a href="/accounts/login/" class="btn btn-primary btn-sm"  style="margin:10px">Sign
+          </div>
+          <p> Arleady have an Account ?<a href="/accounts/login/" class="btn  btn-sm"  style="margin:10px; color: #111;font-size: 20px;">Sign
             In</a> </p>
-
-        </div>
+        
 
       </div>
-
+    </div>
     </div>
   </div>
-  </div>
-</div> <br> <br>
+  
+  
 </body>
 {% endblock %}
