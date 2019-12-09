@@ -4,54 +4,92 @@
 {% load bootstrap4 %}
 {% load staticfiles%}
 
+{% block styles %} {% bootstrap_css %} 
+<!-- Favicons -->
+<link href="img/favicon.png" rel="icon">
+<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Bootstrap CSS File -->
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+
 <style>
 #top{
   background-image: url('https://static-steelkiwi-dev.s3.amazonaws.com/media/filer_public/20/8d/208d6d8d-7690-4618-9aa1-5921c9285343/796131d5-3dda-45c7-a3e1-cffeaa820295.gif');
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  height: 410px;
+  height: 615px;
 }
 #form{
   border-style: ridge;
 }
-h1{
+#hh1{
   text-align: center;
+  color: #18d26e;
+  font-family: 'FontAwesome';
+  font-weight: bold;
+  /* text-shadow: -1px 0 #18d26e, 0 1px #18d26e, 1px 0 #18d26e, 0 -1px #18d26e; */
+  font-size: 40px;
 }
-h3{
-  font-size: 20px;
-}
-body{
-  background-color: #95A5A6 ;
-}
+
+/* body{
+  background-color: #CCCCCC;
+} */
 </style>
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <title>add team</title>
 {{form.media}}
 <body>
-<div class="container" ><br> <br> <br> <br> <br> <br> <br>
-  <div id="form" style="background-color: #f3f3f5;">
+<div class="container-fluide" ><br> <br> <br> <br>
+  <div id="form">
     <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
       <div id="top"></div>
   </div>
   <div class="col-md-1"></div>
   <div class="col-md-4">
-    <h1>Create blog</h1> <br>
+    <h1 id="hh1">Create blog</h1> <br>
     <form action="{%url 'new_blog' activities_id %}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
 
       {% bootstrap_form form%}
-      <input type="submit" class="btn btn-success btn-lg" value="create blog">
+      <input type="submit" class="btn btn-lg" value="create blog">
     </form>
   </div>
 </div>
 </div>
-</div> <br> <br> <br> <br> <br>
+</div>
 
 {% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- JavaScript Libraries -->
 
-{% bootstrap_javascript %}
-{% endblock %}
+<script src="{% static 'js/script.js'%}"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/popper/popper.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/counterup/jquery.waypoints.min.js"></script>
+<script src="lib/counterup/jquery.counterup.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/typed/typed.min.js"></script>
+
+
+{% bootstrap_javascript %} {% endblock %}
 </body>
 {% endblock %}

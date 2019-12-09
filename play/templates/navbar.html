@@ -28,7 +28,7 @@
     }
 
     #header.header-scrolled {
-      background: rgba(0, 0, 0, 0.9);
+      background: #000;
       padding: 20px 0;
       height: 72px;
       transition: all 0.5s;
@@ -40,13 +40,13 @@
     }
 
     #header #logo h1 {
-      font-size: 20px;
-      margin: 0;
-      padding: 0;
+      font-size: 34px;
+      margin-left: 220px;
       line-height: 1;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Source Code Pro', monospace;
       font-weight: 700;
       letter-spacing: 3px;
+      
     }
 
     #header #logo h1 a,
@@ -116,7 +116,7 @@
       content: "\f107";
       position: absolute;
       right: 15px;
-      font-family: FontAwesome;
+      font-family: 'FontAwesome';
       font-style: normal;
       font-weight: normal;
     }
@@ -135,20 +135,19 @@
     /* Nav Meu Styling */
 
     .nav-menu a {
-      padding: 0 8px 10px 8px;
-      text-decoration: none;
-      display: inline-block;
-      color: #fff;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 700;
-      font-size: 13px;
+      padding: 0 2px 4px 2px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #13a456;
       text-transform: uppercase;
-      outline: none;
+      position: relative;
+
     }
 
     .nav-menu li:hover>a,
     .nav-menu>.menu-active>a {
-      color: #18d26e;
+      color: #13a456;
+      text-decoration: none;
     }
 
     .nav-menu>li {
@@ -189,11 +188,11 @@
     Header
   ============================-->
   <header id="header">
-    <div class="container-fluid">
+    <div class="container-fluide">
 
 
       <div id="logo" class="pull-left">
-        <h1><img style="height:60px; width:60px;" src="static/image/logo2.png" alt="logo"><a>Fitness</a></h1>
+        <h1> <a> <strong>Fitness</strong> </a></h1>
 
       </div>
 
@@ -201,13 +200,13 @@
 
         <ul class="nav-menu">
 
-          <li class="menu-active"><a href="{% url 'home' %}" style="font-family: 'Bad Script', cursive">Home</a></li>
-          <li><a href="#about" style="font-family: 'Bad Script', cursive">About Us</a></li>
+          <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#about">About Us</a></li>
 
 
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a href="{% url 'profile' user.id%}" style="font-family: 'Bad Script', cursive">{{user.username}}
+          <li class="nav-item" style="margin-top: -4px;">
+            <a href="{% url 'profile' user.id%}">{{user.username}}
               {% if user.profile.profile_pic%}
               <img src="{{user.profile.profile_pic.url}}" alt="profile"
                 style="border-radius: 50%;height: 35px;width:35px"> </a>
@@ -219,13 +218,13 @@
 
           </li>
           
-                <li>
-                  <a href="/logout" style="font-family: 'Bad Script', cursive">Logout</a>
+                <li class="nav-item">
+                  <a href="/logout">Logout</a>
                 </li>
              
           {% else %}
-          <li>
-            <a class="btn  btn-sm" href="/accounts/login/" style="font-family: 'Bad Script', cursive"> Sign In </a>
+          <li class="nav-item">
+            <a href="/accounts/login/"> Sign In </a>
           </li>
 
           {% endif %}

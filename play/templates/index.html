@@ -46,17 +46,17 @@
     margin-bottom: 10%;
   }
 
-  #h5 {
-    color: #18d26e;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+  #head1{
+    color: #13a456;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 50px;
     font-family: 'Source Code Pro', monospace;
 
   }
 
   #suggest {
-    color: #18d26e;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+    color: #13a456;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 20px;
     font-family: 'Source Code Pro', monospace;
   }
@@ -118,7 +118,7 @@
 --------------------------------*/
 
 #team {
-  background: #fff;
+  background: #ffffff;
   padding: 60px 0;
 }
 
@@ -206,7 +206,7 @@
   
     position: relative;
     width: 200px;
-    height: 300px;
+    height: 200px;
     position: absolute;
     top: 0;
     left: 0;
@@ -217,10 +217,32 @@
     display: block;
     /* background: rgba(0, 0, 0, .6); */
 }
+form#example button {
+
+  width: 7%;
+  padding: 17px;
+  background: #13a456;
+  color: #FFF;
+  font-size: 17px;
+  border: 1px solid grey;
+  
+  cursor: pointer;
+}
+
+form#example button:hover {
+  background: #13a456;
+}
+
+form#example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 </style>
 
-<body >
+<body>
+
   <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
 
@@ -236,17 +258,19 @@
 
                 <div class="carousel-caption d-none d-md-block" id="mt">
 
-                  <h5 id="h5" style="color:#18d26e;"> <strong> Be Fit </strong></h5>
+                  <h1 id="head1"> <strong> Be Fit </strong></h1>
 
                  
 
                     <div class="text-center header mt-5">
-                        <form class="w-100 mt-4" action="{% url 'search_sector' %}">
+                        <form class="w-100 mt-4" id="example" action="{% url 'search_sector' %}">
                           <input class="w-50 p-3" type="search" placeholder="Enter Your Sector" name="sectors" aria-label="Search">
-                          
+                          <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
+
+                        
                         <div class="suggested"> <br>
-                          <p id="suggest"><strong> Suggested: Kacyiru, Gisozi, Kimisagara</strong>  </p>
+                          <p id="suggest"><strong> Suggested: Remera, Kacyiru, Kimisagara</strong>  </p>
                   
                         </div>
                       </div>
@@ -257,34 +281,24 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-    <!--==========================
+   <!--==========================
       Team Section
     ============================-->
-    <section id="team">
-        <div class="container">
+    <div class="container">
+        <div id="team">
             <div class="row">
               <div class="col-sm-12">
                 <div class="title-box text-center">
-                  <h3 style="color:black" class="title-a" style="font-family: 'Bad Script', cursive"> Fitness Activities </h3><br>
+                  <h3 class="title-a" style="font-family: 'Source Code Pro', monospace;; font-weight: bold; color: #13a456; font-size: 40px;"> Fitness Activities </h3><br>
                 
                 </div>
               </div>
             </div>
-        <div class="section-header wow fadeInUp">
-          
-          
-        </div>
-
         <div class="row">
 
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img  style=" height: 100%;
-              width: 100%;" src="static/image/golfe.jpg" class="img-thumbnail" alt="" >
+              <img src="static/image/golfe.jpg" class="img-fluid" alt="" style="height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Golfe</h4>
@@ -297,8 +311,7 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="member">
-              <img  style=" height: 100%;
-              width: 100%;" src="static/image/gym.jpg" class="img-thumbnail" alt="" >
+              <img src="static/image/gym.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Gym</h4>
@@ -310,7 +323,7 @@
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/play2.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <img src="static/image/play2.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Basketball</h4>
@@ -323,7 +336,7 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/valley.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <img src="static/image/valley.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Volleyball</h4>
@@ -335,7 +348,7 @@
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/pussine.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <img src="static/image/pussine.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Swimming pool</h4>
@@ -347,7 +360,7 @@
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/cricke.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <img src="static/image/cricke.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Cricket</h4>
@@ -359,7 +372,7 @@
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/foot.jpeg" class="img-thumbnail" alt="">
+              <img src="static/image/foot.jpeg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Football</h4>
@@ -371,7 +384,7 @@
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="static/image/tenis1.jpg" class="img-thumbnail" alt="" style="width: 350px; height: 200px;">
+              <img src="static/image/tenis1.jpg" class="img-fluid" alt="" style="width:400px; height:200px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Tenis</h4>
@@ -386,23 +399,17 @@
 
 
       </div> 
+
     </div>
-  </div>
-</section>
-
-
-
-      </div>
-    </section><!-- #team -->
   <!--  -->
-  <div class="row">
-      <div class="col-md-1"></div> 
+  <div class="container">  <div class="row">
+     
       <div class="col-md-3">
-          <img src="static/image/yoga.jpg" alt="img" style=" height: 100%;
+          <img src="static/image/yoga.jpg" alt="img" style=" height: 80%;
           width: 190%; margin-left: 5px;" ></div>
   <div class="col-md-3"></div>
-      <div class="col-md-3">
-          <h2 style="font-family: 'Bad Script', cursive; color:black;">About us </h2><br>
+      <div class="col-md-6">
+          <h2 style="font-family: 'Source Code Pro', monospace;; font-weight: bold; color: #13a456; font-size: 40px;">About us </h2><br>
 
           <p id="about"> Sports is the best way to make yourself fit in all respects,It plays a vital role in our life as it keeps us healthy, wealthy and of course active. <br> it is also necessary to put more emphasis on Sports ,Despite the well known benefit of sport in our life ,a huge amount of people in rwanda don't exercise enough because, <br>
             <ul>
@@ -415,8 +422,8 @@
       </div>
      
       <div class="col-md-2"></div>
-  </div><br><br>
- 
+  </div><br><br> 
+</div>
 
     {% block scripts %}
     <!-- JavaScript Libraries -->
