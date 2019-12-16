@@ -58,14 +58,18 @@
     
     /*  */
   }
+#ppp{
+  background: rgb(0, 0, 0); 
+    background: rgba(0, 0, 0, 0.8);
 
+}
 
 </style>
 
 
 <body>
 
-  <div class="container-fluide"> <br> <br> <br> <br> <br> 
+  <div class="container-fluide"> <br> <br> <br> <br> 
 
     <div class="row">
 
@@ -74,19 +78,42 @@
         <div class="w3-container  w3-round w3-margin"><br> -->
 
         <!-- <span class="w3-right w3-opacity"> -->
-            <div class="card" >
-                <div class="card-header">
-                    <h1 class="text-center" style="font-family: 'Bad Script', cursive; color: #13a456;">{{image.category}}</h1>
-                </div>
-                <!-- <div class="card-body" >
-                    
-                    <p class="text-center">{{image.description}}</p>
-                </div> -->
-              </div>
+
        
         <!-- <p class="text-center" style="font-family: 'Bad Script', cursive">Location:{{image.sector}}</p> -->
         
-        <img src="{{image.photo.url}}" class="" width="100%">
+        
+
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+
+          <div class="carousel-inner" role="listbox">
+      
+            <div class="carousel-item active">
+      
+              <!-- <img class="d-block w-100" src="https://farm5.static.flickr.com/4530/26749582429_ddd272d6f0_b.jpg"
+                alt="First slide"> -->
+                <img src="{{image.photo.url}}" class="" width="100%" style="height: 550px;">
+                
+      
+                      <div class="carousel-caption d-none d-md-block" id="mt">
+
+                          <div class="text-center header mt-5">
+
+      
+                              
+                              <div> <br>
+                                <p class="text-center;" id="ppp" style="font-size: 50px; color: #18d26e; margin-top: -250px;">{{image.description}}</p>
+                        
+                              </div>
+                            </div>
+                        </div>
+                      
+      
+                  </div>
+                </div>
+              </div>
+
         <!-- </span> -->
         <!-- </div> -->
         <!-- </div> -->
@@ -94,76 +121,78 @@
     </div>
 
   <br>
+<div class="container-fluide">
 
+  <div class="row">          
+    <div class="col-md-2">
+      <div class="card">
+            <div class="card-header">
+                <h3 style="font-family: 'Bad Script', cursive; color: #18d26e; font-size: 50px;">Teams </h3>
+            </div>
+            <div class="card-body" >
+                    {%for teams in team %}
+                      <a href="{%url 'chat' teams.id %}">
+                        <ul style="text-decoration: none;">
+                          <li>
+                            <p style="font-family: 'Bad Script', cursive; text-decoration: none; font-size: 20px;">{{teams.t_name}}</p>
+                          </li>
+                        </ul>
+                      </a>  
+                    {%endfor%}  
+                    <a class="btn btn-lg" href="{%url 'create_team' image.id %}" style="font-family: 'Bad Script', cursive;">create team</a>   
+            </div>
+          </div>
+        </div>
+       
+<div class="col-md-5">
+  <div class="card" >
+      <div class="card-header">
+          <h3 style="font-family: 'Bad Script', cursive; color: #18d26e; font-size: 50px;">Blog posts</h3>
+      </div>
+      <div class="card-body" >
+              {% for blogs in blog %}
+              <!-- <div class="blog"> -->
+                <h5 class="font-weight-bold " style="font-family: 'Bad Script', cursive; color: #18d26e; font-size: 25px;"><u> {{blogs.title}} </u></h5>
+                <img src="{{blogs.image.url}}" class="image"><br> <br> <br> <br>
+                <p class="" id="aboutme" style="font-family: 'Bad Script', cursive; font-size: 20px;">{{blogs.blog_description}} </p>
+                <p class="" id="aboutme" style="font-family: 'Bad Script', cursive; font-size: 20px">Posted by: {{blogs.posted_by}} </p>
+              <!-- </div> -->
+              <!-- </div> -->
+              {%endfor%}
+                <a class="btn btn-lg" href="{%url 'new_blog' image.id %}" style="font-family: 'Bad Script', cursive">create Blog</a>
+      </div>
+    </div>
+  </div> 
 
-    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div class="card" style="text-align: center;">
+                <div class="card-header">
+                    <h3 style="font-family: 'Bad Script', cursive;color: #18d26e; font-size: 50px;">Events
+                      </h3>
+                </div>
+                <div class="card-body" >
 
-      <div class="col-md-4">
-          <div class="card" >
-              <div class="card-header">
-                  <h3 style="font-family: 'Bad Script', cursive; color: #13a456;">Blog posts</h3>
-              </div>
-              <div class="card-body" >
-                      {% for blogs in blog %}
-                      <!-- <div class="blog"> -->
-                        <h5 class="font-weight-bold " style="font-family: 'Bad Script', cursive; color: #13a456;"><u> {{blogs.title}} </u></h5>
-                        <img src="{{blogs.image.url}}" class="image"><br> <br> <br>
-                        <p class="" id="aboutme" style="font-family: 'Bad Script', cursive">{{blogs.blog_description}} </p>
-                        <p class="" id="aboutme" style="font-family: 'Bad Script', cursive">Posted by: {{blogs.posted_by}} </p>
-                      <!-- </div> -->
-                      <!-- </div> -->
-                      {%endfor%}
-                        <a class="btn btn-lg" href="{%url 'new_blog' image.id %}" style="font-family: 'Bad Script', cursive">create Blog</a>
+                        {% for event in post %}
+
+                          <h5 class="font-weight-bold" style="font-family: 'Bad Script', cursive;font-size: 20px;">* {{event.title}}
+                          </h5> <br>
+                          <!-- <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p> -->
+                          <!-- <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p> -->
+                
+
+                        {%endfor%}
+
+                
+                </div>
               </div>
             </div>
-          </div> 
-          <div class="col-md-1"></div>
-          
-          <div class="col-md-3">
-              <div>
-                  <div class="card-header">
-                      <h3 style="font-family: 'Bad Script', cursive; color: #13a456;">Teams </h3>
-                  </div>
-                  <div class="card-body" >
-                          {%for teams in team %}
-                            <a href="{%url 'chat' teams.id %}">
-                              <ul>
-                                <li style="text-decoration: none;">
-                                  <p style="font-family: 'Bad Script', cursive;">{{teams.t_name}}</p>
-                                </li>
-                              </ul>
-                            </a>  
-                          {%endfor%}  
-                          <a class="btn btn-lg" href="{%url 'create_team' image.id %}" style="font-family: 'Bad Script', cursive">create team</a>   
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="col-md-3">
-                  <div class="card" style="text-align: center;">
-                      <div class="card-header">
-                          <h3 style="font-family: 'Bad Script', cursive; color: #13a456;">Events
-                            </h3>
-                      </div>
-                      <div class="card-body" >
-
-                              {% for event in post %}
-
-                                <h5 class="font-weight-bold" style="font-family: 'Bad Script', cursive;margin-left: 10%">* {{event.title}}
-                                </h5>
-                                <!-- <p class="dark-grey-text" id="aboutme">{{event.post_description}} </p> -->
-                                <!-- <p class="dark-grey-text" id="aboutme">Posted by: {{event.posted_by}} </p> -->
-                      
-
-                              {%endfor%}
-
-                      
-                      </div>
-                    </div>
-                  </div>
 
 
-                </div>
+          </div>
+</div>
+
+
   </div> <br>
 
   {% block scripts %}
