@@ -118,8 +118,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'weplay',
+<<<<<<< HEAD
         'USER': 'clemence',
         'PASSWORD':'34003',
+=======
+        'USER': 'wecode',
+        'PASSWORD':'juruyuly1',
+
+        
+
+>>>>>>> 2deece16375e445d27c1b36a639fba8da1da5962
     }
 }
 
